@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rspec-expectations'
   gem 'rspec-mocks'
   gem 'rspec-support'
+  gem 'rails-controller-testing'
 end
 
 group :development do

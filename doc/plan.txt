@@ -1,0 +1,11 @@
+A todo list
+
+a todo item is an entity holding
+- description
+- completed
+- time it was created
+
+1. see existing items
+2. see all items
+3. add new item
+4. mark item complete
