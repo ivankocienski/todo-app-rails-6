@@ -38,6 +38,9 @@ group :development, :test do
   gem 'rspec-support'
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
+  gem 'rubocop-rails'
+  gem 'rubocop-rspec'
+  gem 'rubocop-rake'
 end
 
 group :development do
