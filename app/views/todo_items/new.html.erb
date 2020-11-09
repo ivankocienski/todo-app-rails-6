@@ -1,0 +1,11 @@
+<h1>Add New Todo Item</h1>
+
+<%= form_for @item do |form| %>
+    <fieldset>
+        <%= form.label :description %>
+        <%= form.text_field :description %>
+    </fieldset>
+    <fieldset>
+        <%= form.submit %>
+    </fieldset>
+<% end %>
