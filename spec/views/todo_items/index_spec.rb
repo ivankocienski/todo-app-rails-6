@@ -19,6 +19,16 @@ describe 'todo_items/index', type: :view do
         expect(rendered).to have_selector("ul li", count: 3)
     end
 
+    it 'has item links' do
+        sole_item = FactoryBot.create(:todo_item)
+        assign :items, [ sole_item ]
+        
+        render 
+
+        link_selector = "ul li a[href='#{edit_todo_item_path(sole_item)}']"
+        expect(rendered).to have_selector(link_selector)
+    end
+
     it 'has "add new" link' do
         assign :items, []
         render

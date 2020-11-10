@@ -19,4 +19,15 @@ describe "Todo Items", type: :routing do
         end        
     end
 
+    context 'edit' do
+        it 'routes to "edit" action' do
+            expect( get: '/todo_items/123/edit').to route_to("todo_items#edit", id: "123")
+        end
+    end
+
+    context 'update' do
+        it 'routes to "update" action' do
+            expect( put: '/todo_items/123').to route_to("todo_items#update", id: "123")
+        end
+    end
 end

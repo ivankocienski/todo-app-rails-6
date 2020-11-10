@@ -5,7 +5,7 @@ a todo item is an entity holding
 - completed
 - time it was created
 
-1. see existing items
+1. see pending items
 2. see all items
 3. add new item
 4. mark item complete
