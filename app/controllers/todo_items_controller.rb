@@ -1,7 +1,14 @@
 class TodoItemsController < ApplicationController
 
     def index
-        @items = TodoItem.all
+        @filter_items = params[:filter] || ''
+        @filter_items = @filter_items == 'pending'
+
+        if @filter_items
+            @items = TodoItem.where(completed: false).all
+        else 
+            @items = TodoItem.all
+        end
     end
 
     def new
@@ -45,4 +52,7 @@ private
     def item_params
         params.require(:todo_item).permit(:description)
     end
+
+    #def filter_completed
+    #end
 end

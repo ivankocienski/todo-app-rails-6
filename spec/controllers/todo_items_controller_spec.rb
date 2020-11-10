@@ -18,6 +18,25 @@ describe TodoItemsController, type: :controller do
             expect(items).to be_a(ActiveRecord::Relation)
             expect(items.length).to eq 3
         end
+
+        it 'sets "completed" filter to OFF by default' do
+            get :index
+
+            expect(assigns[:filter_items]).to be_a(FalseClass)
+        end
+        
+        it 'can filter out completed items' do
+            FactoryBot.create :todo_item
+            FactoryBot.create :todo_item_2, completed: true
+            FactoryBot.create :todo_item_3
+
+            get :index, { params: { filter: :pending}}
+
+            items = assigns[:items]
+            expect(items.length).to eq 2
+
+            expect(assigns[:filter_items]).to be_truthy
+        end
     end
 
     context 'new' do

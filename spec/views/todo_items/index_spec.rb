@@ -36,4 +36,33 @@ describe 'todo_items/index', type: :view do
         add_new_selector = "a[@href='/todo_items/new']"
         expect(rendered).to have_selector(add_new_selector, text: "Add New Item...")
     end
+
+    context 'filter UX' do
+        before :each do
+            assign :items, []
+        end
+
+        context 'when filter is OFF' do
+            it 'shows a filter link' do                
+                assign :filter_items, false
+                render
+                
+                filter_link_selector = "a[@href='?filter=pending']"
+                expect(rendered).to have_selector(filter_link_selector, text: "Show only pending items")
+        
+            end
+        end
+
+        context 'when filter is ON' do
+            it 'shows a message' do
+                assign :filter_items, true
+                render
+                
+                filter_link_selector = "a[@href='?filter=pending']"
+                expect(rendered).not_to have_selector(filter_link_selector)
+
+                expect(rendered).to have_content("Showing only pending items")
+            end
+        end
+    end
 end
