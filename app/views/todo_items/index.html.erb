@@ -7,7 +7,7 @@
     <p><a href="?filter=pending">Show only pending items</a></p>
 <% end %>
 
-<ul>
+<ul id="item_list">
     <% @items.each do |item| %>
         <li><%= link_to todo_item_title_status(item), edit_todo_item_path(item) %></li>
     <% end %>

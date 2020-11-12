@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Rails6</title>
+    <title>A Todo App</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,27 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="root">
+      <header>
+        <div id="align">
+          <h1 id="title">
+            <a href="/"><span class='first'>Todo</span> <span class='second'>app</span></a>
+          </h1>
+          <nav>
+            <a href="/" class="active">Home</a>
+            <a href="/todo_items">Todo Items</a>
+            <a href="/about">About</a>
+          </nav>
+        </div>
+      </header>
+      <main>
+        <div id="content">
+          <%= yield %>
+        </div>
+      </main>
+      <footer>
+        <p>Copyright &copy; 2020 SomeGuy, INC.</p>
+      </footer>
+    </div>
   </body>
 </html>
