@@ -8,4 +8,13 @@ describe HomeController, type: :controller do
             expect(response).to be_successful
         end
     end
+
+    context '#about' do
+        it 'renders about page' do
+            get :about
+
+            expect(response).to be_successful
+        end
+    end
+
 end

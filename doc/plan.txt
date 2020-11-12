@@ -9,3 +9,7 @@ a todo item is an entity holding
 2. see all items
 3. add new item
 4. mark item complete
+
+
+todo_lists
+  name
