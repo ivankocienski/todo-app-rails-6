@@ -1,6 +1,23 @@
 require 'rails_helper'
 
 describe TodoItemsController, type: :controller do
+    context 'navigation' do
+        controller do
+            def peek_navigation
+                render plain: ''
+            end
+        end
+
+        before :each do
+            routes.draw { get "peek_navigation" => "todo_items#peek_navigation" }
+        end
+
+        it 'is set up correctly' do
+            get :peek_navigation
+            expect(assigns[:navigation]).to eq :todo_items
+        end
+    end
+
     context 'index' do
         it 'renders index view' do
             get :index

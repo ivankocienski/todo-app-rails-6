@@ -17,9 +17,9 @@
             <a href="/"><span class='first'>Todo</span> <span class='second'>app</span></a>
           </h1>
           <nav>
-            <a href="/" class="active">Home</a>
-            <a href="/todo_items">Todo Items</a>
-            <a href="/about">About</a>
+            <%= navigation_link "/", :home, "Home" %>
+            <%= navigation_link "/todo_items", :todo_items, "Todo Items" %>
+            <%= navigation_link "/about", :about, "About" %>
           </nav>
         </div>
       </header>

@@ -1,5 +1,7 @@
 class TodoItemsController < ApplicationController
 
+    before_action :set_navigation_mode
+
     def index
         @filter_items = params[:filter] || ''
         @filter_items = @filter_items == 'pending'
@@ -55,4 +57,8 @@ private
 
     #def filter_completed
     #end
+
+    def set_navigation_mode
+        @navigation = :todo_items
+    end
 end

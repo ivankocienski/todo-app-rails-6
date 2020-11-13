@@ -3,5 +3,6 @@ class HomeController < ApplicationController
     end
 
     def about
+        @navigation = :about
     end
 end
