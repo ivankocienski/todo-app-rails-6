@@ -12,4 +12,11 @@ a todo item is an entity holding
 
 
 todo_lists
-  name
+  - name
+
+I have too many things to organise and I want to be able to have multiple todo lists!
+
+1. see my todo lists overview
+2. make a new todo list
+3. modify (rename) a todo list
+3. remove todo lists

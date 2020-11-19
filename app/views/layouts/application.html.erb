@@ -17,9 +17,10 @@
             <a href="/"><span class='first'>Todo</span> <span class='second'>app</span></a>
           </h1>
           <nav>
-            <%= navigation_link "/", :home, "Home" %>
-            <%= navigation_link "/todo_items", :todo_items, "Todo Items" %>
-            <%= navigation_link "/about", :about, "About" %>
+            <%= navigation_link root_path, :home, "Home" %>
+            <%= navigation_link todo_lists_path, :todo_lists, "Todo Lists" %>
+            <%= navigation_link todo_items_path, :todo_items, "Todo Items" %>
+            <%= navigation_link about_path, :about, "About" %>
           </nav>
         </div>
       </header>

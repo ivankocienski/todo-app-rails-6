@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get '/about' => 'home#about'
 
   resources :todo_items
+  resources :todo_lists
 end
