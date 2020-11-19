@@ -10,11 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_201_108_133_334) do
-    create_table 'todo_items', force: :cascade do |t|
-        t.text 'description', default: ''
-        t.boolean 'completed', default: false
-        t.datetime 'created_at', precision: 6, null: false
-        t.datetime 'updated_at', precision: 6, null: false
-    end
+ActiveRecord::Schema.define(version: 2020_11_19_155907) do
+
+  create_table "todo_items", force: :cascade do |t|
+    t.text "description", default: ""
+    t.boolean "completed", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "todo_lists", force: :cascade do |t|
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
 end

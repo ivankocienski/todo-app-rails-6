@@ -1,1 +1,7 @@
 <h1>Your Todo Lists</h1>
+
+<ul id='todo-lists'>
+    <% @todo_lists.each do |tl| %>
+        <li><%= tl.title %>
+    <% end %>
+</ul>
