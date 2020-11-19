@@ -9,6 +9,6 @@ feature 'Visitor views todo items' do
     end
 
     def given_some_items_exist
-        %i{ todo_item todo_item_2 todo_item_3 }.map { |id| FactoryBot.create(id) }
+        %i[todo_item todo_item_2 todo_item_3].map { |id| FactoryBot.create(id) }
     end
 end

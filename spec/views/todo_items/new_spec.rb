@@ -7,7 +7,7 @@ describe 'todo_items/new', type: :view do
 
     it 'has a title' do
         render
-        expect(rendered).to have_selector('h1', text: "Add New Todo Item")
+        expect(rendered).to have_selector('h1', text: 'Add New Todo Item')
     end
 
     it 'has form' do
@@ -18,8 +18,8 @@ describe 'todo_items/new', type: :view do
         expect(rendered).to have_selector(form_filter)
 
         # label
-        field_label = "form label"
-        expect(rendered).to have_selector(field_label, text: "Description")
+        field_label = 'form label'
+        expect(rendered).to have_selector(field_label, text: 'Description')
 
         # field
         field_input = "form input[name='todo_item[description]']"

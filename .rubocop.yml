@@ -1,3 +1,10 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/**/*'
+    - 'node_modules/**/*'
+
 Style/FrozenStringLiteralComment:
     Enabled: false
 
@@ -14,4 +21,10 @@ Style/Documentation:
     Enabled: false
 
 Bundler/OrderedGems:
+    Enabled: false
+
+Metrics/BlockLength:
+    Enabled: false
+
+Naming/VariableNumber:
     Enabled: false

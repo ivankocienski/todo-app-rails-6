@@ -13,7 +13,7 @@ describe TodoItemsHelper, type: :helper do
             item = FactoryBot.build(:todo_item, completed: true)
             title = todo_item_title_status(item)
 
-            expect(title).to eq(item.description + ' (done)')            
+            expect(title).to eq("#{item.description} (done)")
         end
     end
 end

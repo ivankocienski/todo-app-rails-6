@@ -5,7 +5,7 @@ feature 'Todo Lists' do
         visit '/'
 
         click_link('Todo Lists')
-        
-        expect(page).to have_content("Your Todo Lists")
+
+        expect(page).to have_content('Your Todo Lists')
     end
 end

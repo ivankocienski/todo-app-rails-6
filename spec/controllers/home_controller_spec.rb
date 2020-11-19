@@ -6,7 +6,7 @@ describe HomeController, type: :controller do
             get :root
 
             expect(response).to be_successful
-        end        
+        end
     end
 
     context '#about' do
@@ -21,5 +21,4 @@ describe HomeController, type: :controller do
             expect(assigns[:navigation]).to eq :about
         end
     end
-
 end

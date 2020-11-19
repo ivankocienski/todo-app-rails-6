@@ -2,7 +2,6 @@ require 'rails_helper'
 
 describe ApplicationController, type: :controller do
     context 'navigation' do
-
         controller do
             def index
                 render plain: ''

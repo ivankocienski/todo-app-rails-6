@@ -9,7 +9,7 @@ describe TodoItemsController, type: :controller do
         end
 
         before :each do
-            routes.draw { get "peek_navigation" => "todo_items#peek_navigation" }
+            routes.draw { get 'peek_navigation' => 'todo_items#peek_navigation' }
         end
 
         it 'is set up correctly' do
@@ -21,7 +21,7 @@ describe TodoItemsController, type: :controller do
     context 'index' do
         it 'renders index view' do
             get :index
-            expect(response).to render_template("todo_items/index")
+            expect(response).to render_template('todo_items/index')
         end
 
         it 'finds items' do
@@ -41,13 +41,13 @@ describe TodoItemsController, type: :controller do
 
             expect(assigns[:filter_items]).to be_a(FalseClass)
         end
-        
+
         it 'can filter out completed items' do
             FactoryBot.create :todo_item
             FactoryBot.create :todo_item_2, completed: true
             FactoryBot.create :todo_item_3
 
-            get :index, { params: { filter: :pending}}
+            get :index, { params: { filter: :pending } }
 
             items = assigns[:items]
             expect(items.length).to eq 2
@@ -59,7 +59,7 @@ describe TodoItemsController, type: :controller do
     context 'new' do
         it 'renders new view' do
             get :new
-            expect(response).to render_template("todo_items/new")
+            expect(response).to render_template('todo_items/new')
         end
 
         it 'sets up an Item' do
@@ -70,16 +70,15 @@ describe TodoItemsController, type: :controller do
 
     context 'edit' do
         context 'with existing item' do
-
             let(:existing_item) { FactoryBot.create(:todo_item) }
-        
+
             it 'renders edit view' do
-                get :edit, { params: { id: existing_item.id }}
-                expect(response).to render_template("todo_items/edit")
+                get :edit, { params: { id: existing_item.id } }
+                expect(response).to render_template('todo_items/edit')
             end
 
             it 'sets up an Item' do
-                get :edit, { params: { id: existing_item.id }}
+                get :edit, { params: { id: existing_item.id } }
 
                 expect(assigns[:item]).to eq(existing_item)
             end
@@ -87,12 +86,12 @@ describe TodoItemsController, type: :controller do
 
         context 'with bad item ID' do
             it 'fails gracefully' do
-                get :edit, { params: { id: 123 }}
+                get :edit, { params: { id: 123 } }
                 expect(response.status).to eq 404
             end
 
             it 'has message' do
-                get :edit, { params: { id: 123 }}
+                get :edit, { params: { id: 123 } }
                 expect(flash.now[:error]).to eq 'Todo Item not found'
             end
         end
@@ -100,7 +99,7 @@ describe TodoItemsController, type: :controller do
 
     context 'create' do
         context 'with valid fields' do
-            let(:new_item_params) {{ description: "This is a description" }}
+            let(:new_item_params) { { description: 'This is a description' } }
 
             it 'creates an item' do
                 post :create, params: { todo_item: new_item_params }
@@ -113,15 +112,15 @@ describe TodoItemsController, type: :controller do
             it 'does redirect' do
                 post :create, params: { todo_item: new_item_params }
 
-                expect(response).to redirect_to("/todo_items")
+                expect(response).to redirect_to('/todo_items')
             end
         end
 
         context 'with missing fields' do
             it 'renders New action' do
-                post :create, params: { todo_item: { description: "" }}
+                post :create, params: { todo_item: { description: '' } }
 
-                expect(response).to render_template("todo_items/new")
+                expect(response).to render_template('todo_items/new')
             end
         end
     end
