@@ -1,0 +1,17 @@
+Style/FrozenStringLiteralComment:
+    Enabled: false
+
+Layout/IndentationWidth:
+    Width: 4
+
+Layout/TrailingEmptyLines:
+    Enabled: false
+
+Style/EmptyMethod:
+    Enabled: false
+
+Style/Documentation:
+    Enabled: false
+
+Bundler/OrderedGems:
+    Enabled: false
