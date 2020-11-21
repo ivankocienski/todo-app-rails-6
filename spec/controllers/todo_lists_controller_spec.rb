@@ -13,6 +13,44 @@ describe TodoListsController, type: :controller do
         end
     end
 
+    context '#show' do
+        context 'with existing todo list' do
+            let(:todo_list) { FactoryBot.create(:todo_list) }
+
+            it 'finds a todo list' do
+                get :show, params: { id: todo_list.id }
+                expect(assigns[:todo_list]).to eq todo_list
+            end
+        end
+
+        context 'with non existing todo list' do
+            it 'redirects back to todo list index and has message' do
+                get :show, params: { id: 123 }
+                expect(response).to redirect_to('/todo_lists')
+                expect(flash[:error]).to eq 'Could not find a Todo List with that ID'
+            end
+        end
+    end
+
+    context '#edit' do
+        context 'with existing item' do
+            let(:todo_list) { FactoryBot.create(:todo_list) }
+
+            it 'sets up a todo list' do
+                get :edit, params: { id: todo_list.id }
+                expect(assigns[:todo_list]).to eq todo_list
+            end
+        end
+
+        context 'with non existing todo list' do
+            it 'redirects back to todo list index and has message' do
+                get :edit, params: { id: 123 }
+                expect(response).to redirect_to('/todo_lists')
+                expect(flash[:error]).to eq 'Could not find a Todo List with that ID'
+            end
+        end
+    end
+
     context '#new' do
         it 'exists' do
             get :new
@@ -65,6 +103,50 @@ describe TodoListsController, type: :controller do
             it 'sets up error flash' do
                 post :create, params: { todo_list: bad_params }
                 expect(flash.now[:error]).to eq 'Todo List was not saved'
+            end
+        end
+    end
+
+    context '#update' do
+        context 'with non existant Todo List ID' do
+            it 'redirects back to index' do
+                put :update, params: { id: 123 }
+                expect(response).to redirect_to('/todo_lists')
+                expect(flash[:error]).to eq 'Could not find a Todo List with that ID'
+            end
+        end
+
+        context 'with existing Todo List ID' do
+            let(:todo_list) { FactoryBot.create(:todo_list) }
+
+            context 'with valid params' do
+                let(:todo_params) { { title: 'A modified Todo List title' } }
+
+                it 'updates item' do
+                    put :update, params: { id: todo_list.id, todo_list: todo_params }
+
+                    todo_list = assigns[:todo_list]
+                    expect(todo_list).to be_a(TodoList)
+                    expect(todo_list.title).to eq 'A modified Todo List title'
+                end
+
+                it 'redirects with message' do
+                    put :update, params: { id: todo_list.id, todo_list: todo_params }
+
+                    expect(response).to redirect_to('/todo_lists')
+                    expect(flash[:info]).to eq 'Todo List updated successfully'
+                end
+            end
+
+            context 'with invalid params' do
+                let(:todo_params) { { title: '' } }
+
+                it 'takes user to edit page with error' do
+                    put :update, params: { id: todo_list.id, todo_list: todo_params }
+
+                    expect(response).to render_template('todo_lists/edit')
+                    expect(flash[:error]).to eq 'Todo List failed to update'
+                end
             end
         end
     end

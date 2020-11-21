@@ -28,3 +28,6 @@ Metrics/BlockLength:
 
 Naming/VariableNumber:
     Enabled: false
+
+Layout/EmptyLinesAroundExceptionHandlingKeywords:
+    Enabled: false

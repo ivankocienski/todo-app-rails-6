@@ -4,6 +4,6 @@
 
 <ul id='todo-lists'>
     <% @todo_lists.each do |tl| %>
-        <li><%= tl.title %>
+        <li><%= link_to tl.title, todo_list_path(tl) %></li>
     <% end %>
 </ul>
