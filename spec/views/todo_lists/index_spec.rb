@@ -15,7 +15,7 @@ describe 'todo_lists/index', type: :view do
             FactoryBot.create(:todo_list_3)
         ]
         render
-        
+
         expect(rendered).to have_selector('ul#todo-lists li', count: 3)
     end
 end

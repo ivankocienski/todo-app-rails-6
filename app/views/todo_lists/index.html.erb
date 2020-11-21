@@ -1,5 +1,7 @@
 <h1>Your Todo Lists</h1>
 
+<p><%= link_to 'Create New Todo List', new_todo_list_path %></p>
+
 <ul id='todo-lists'>
     <% @todo_lists.each do |tl| %>
         <li><%= tl.title %>

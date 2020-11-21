@@ -1,0 +1,11 @@
+<h1>Create New Todo List</h1>
+
+<%= form_for @todo_list do |form| %>
+    <fieldset>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </fieldset>
+    <fieldset>
+        <%= form.submit 'Create Todo list'%>
+    </fieldset>
+<% end %>
