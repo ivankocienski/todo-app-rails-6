@@ -150,4 +150,33 @@ describe TodoListsController, type: :controller do
             end
         end
     end
+
+    context '#destroy' do
+        context 'with non existant Todo List ID' do
+            it 'redirects back to index' do
+                delete :destroy, params: { id: 123 }
+                expect(response).to redirect_to('/todo_lists')
+                expect(flash[:error]).to eq 'Could not find a Todo List with that ID'
+            end
+        end
+
+        context 'with existing Todo List ID' do
+            let(:todo_list) { FactoryBot.create(:todo_list) }
+
+            it 'deletes item' do
+                todo_list # create before expect block
+
+                expect do
+                    delete :destroy, params: { id: todo_list.id }
+                end.to change(TodoList, :count).by(-1)
+            end
+
+            it 'redirects with feedback message' do
+                delete :destroy, params: { id: todo_list.id }
+
+                expect(response).to redirect_to('/todo_lists')
+                expect(flash[:info]).to eq 'Todo List has been deleted'
+            end
+        end
+    end
 end

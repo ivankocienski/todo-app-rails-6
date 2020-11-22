@@ -18,6 +18,5 @@ feature 'Todo Lists' do
         click_button 'Update'
 
         expect(page).to have_content('A renamed Todo List')
-
     end
 end

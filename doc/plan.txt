@@ -19,4 +19,4 @@ I have too many things to organise and I want to be able to have multiple todo l
 1. see my todo lists overview
 2. make a new todo list
 3. modify (rename) a todo list
-3. remove todo lists
+4. remove todo lists

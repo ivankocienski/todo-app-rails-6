@@ -1,4 +1,6 @@
 class TodoListsController < ApplicationController
+    before_action :find_todo_list, only: %i[show edit update destroy]
+
     def index
         @todo_lists = TodoList.all
     end
@@ -8,19 +10,9 @@ class TodoListsController < ApplicationController
     end
 
     def show
-        @todo_list = TodoList.find_by_id(params[:id])
-        if @todo_list.nil?
-            flash[:error] = 'Could not find a Todo List with that ID'
-            redirect_to todo_lists_path
-        end
     end
 
     def edit
-        @todo_list = TodoList.find_by_id(params[:id])
-        if @todo_list.nil?
-            flash[:error] = 'Could not find a Todo List with that ID'
-            redirect_to todo_lists_path
-        end
     end
 
     def create
@@ -36,15 +28,9 @@ class TodoListsController < ApplicationController
     end
 
     def update
-        @todo_list = TodoList.find_by_id(params[:id])
-        if @todo_list.nil?
-            flash[:error] = 'Could not find a Todo List with that ID'
+        @todo_list.update! todo_list_params
 
-        else
-            flash[:info] = 'Todo List updated successfully'
-            @todo_list.update! todo_list_params
-        end
-
+        flash[:info] = 'Todo List updated successfully'
         redirect_to todo_lists_path
 
     rescue ActiveRecord::RecordInvalid
@@ -52,9 +38,24 @@ class TodoListsController < ApplicationController
         render 'edit'
     end
 
+    def destroy
+        @todo_list.destroy
+
+        redirect_to todo_lists_path
+        flash[:info] = 'Todo List has been deleted'
+    end
+
     private
 
     def todo_list_params
         params.require(:todo_list).permit(:title)
+    end
+
+    def find_todo_list
+        @todo_list = TodoList.find_by_id(params[:id])
+        return if @todo_list
+
+        flash[:error] = 'Could not find a Todo List with that ID'
+        redirect_to todo_lists_path
     end
 end

@@ -1,5 +1,9 @@
 <h1>Edit <%= @todo_list.title %></h1>
 
+<div>
+    <%= button_to 'Delete', todo_list_path(@todo_list), method: :delete%>
+</div>
+
 <%= form_for @todo_list do |form | %>
     <fieldset>
         <%= form.label :title %>

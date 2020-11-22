@@ -36,4 +36,10 @@ describe 'Todo Lists', type: :routing do
             expect(put: '/todo_lists/123').to route_to('todo_lists#update', id: '123')
         end
     end
+
+    context 'delete' do
+        it 'routes to "delete" action' do
+            expect(delete: '/todo_lists/123').to route_to('todo_lists#destroy', id: '123')
+        end
+    end
 end
