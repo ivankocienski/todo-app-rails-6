@@ -129,6 +129,18 @@ describe TodoItemsController, type: :controller do
                 expect(response).to render_template('todo_items/new')
             end
         end
+
+        context 'with invalid Todo List' do
+            it 'renders New action' do
+                todo_item_params = {
+                    description: 'This description is valid',
+                    todo_list_id: 123
+                }
+                post :create, params: { todo_item: todo_item_params }
+
+                expect(response).to render_template('todo_items/new')
+            end
+        end
     end
 
     context 'update' do
