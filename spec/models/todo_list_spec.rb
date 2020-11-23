@@ -12,4 +12,8 @@ RSpec.describe TodoList, type: :model do
             expect(model).to be_valid
         end
     end
+
+    describe 'associations' do
+        it { is_expected.to have_many(:todo_items).dependent(:destroy) }
+    end
 end

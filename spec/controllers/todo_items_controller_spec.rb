@@ -99,7 +99,13 @@ describe TodoItemsController, type: :controller do
 
     context 'create' do
         context 'with valid fields' do
-            let(:new_item_params) { { description: 'This is a description' } }
+            let(:todo_list) { FactoryBot.create(:todo_list) }
+            let(:new_item_params) do
+                {
+                    description: 'This is a description',
+                    todo_list_id: todo_list.id
+                }
+            end
 
             it 'creates an item' do
                 post :create, params: { todo_item: new_item_params }

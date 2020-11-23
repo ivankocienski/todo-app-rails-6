@@ -1,3 +1,9 @@
 <h1><%= @todo_list.title %></h1>
 
 <p><%= link_to 'Edit', edit_todo_list_path(@todo_list) %></p>
+
+<ul id='todo-items'>
+<% @todo_list.todo_items.all.each do |item| %>
+    <li><%= item.description %></li>
+<% end %>
+</ul>

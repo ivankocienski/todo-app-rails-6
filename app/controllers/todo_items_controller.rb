@@ -46,7 +46,7 @@ class TodoItemsController < ApplicationController
     private
 
     def item_params
-        params.require(:todo_item).permit(:description)
+        params.require(:todo_item).permit(:description, :todo_list_id)
     end
 
     # def filter_completed
