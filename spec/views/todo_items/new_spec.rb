@@ -1,7 +1,10 @@
 require 'rails_helper'
 
 describe 'todo_items/new', type: :view do
+    let(:todo_list) { FactoryBot.create(:todo_list) }
+
     before :each do
+        assign :todo_list, todo_list
         assign :item, TodoItem.new
     end
 
@@ -14,7 +17,8 @@ describe 'todo_items/new', type: :view do
         render
 
         # form
-        form_filter = "form[action='/todo_items'][method='post']"
+        path = "/todo_lists/#{todo_list.id}/todo_items"
+        form_filter = "form[action='#{path}'][method='post']"
         expect(rendered).to have_selector(form_filter)
 
         # label

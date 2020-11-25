@@ -1,16 +1,6 @@
 class TodoItemsController < ApplicationController
     before_action :set_navigation_mode
-
-    def index
-        @filter_items = params[:filter] || ''
-        @filter_items = @filter_items == 'pending'
-
-        @items = if @filter_items
-                     TodoItem.where(completed: false).all
-                 else
-                     TodoItem.all
-                 end
-    end
+    before_action :find_todo_list
 
     def new
         @item = TodoItem.new
@@ -25,9 +15,11 @@ class TodoItemsController < ApplicationController
     end
 
     def create
-        @item = TodoItem.create!(item_params)
+        @item = TodoItem.new(item_params)
+        @item.todo_list = @todo_list
+        @item.save!
 
-        redirect_to todo_items_path
+        redirect_to todo_list_path(@todo_list)
     rescue ActiveRecord::RecordInvalid
         render 'new'
     end
@@ -40,19 +32,24 @@ class TodoItemsController < ApplicationController
     rescue ActiveRecord::RecordNotFound
         flash[:error] = 'Todo Item with that ID could not be found'
     ensure
-        redirect_to todo_items_path
+        redirect_to todo_list_path(@todo_list)
     end
 
     private
 
     def item_params
-        params.require(:todo_item).permit(:description, :todo_list_id)
+        params.require(:todo_item).permit(:description)
     end
-
-    # def filter_completed
-    # end
 
     def set_navigation_mode
         @navigation = :todo_items
+    end
+
+    def find_todo_list
+        @todo_list = TodoList.find_by_id(params[:todo_list_id])
+        return if @todo_list
+
+        flash[:error] = 'Could not find Todo List with that ID'
+        redirect_to todo_lists_path
     end
 end

@@ -1,6 +1,15 @@
 require 'rails_helper'
 
-describe 'Todo Items', type: :routing do
+describe 'Todo List Todo Items', type: :routing do
+    let(:todo_list) { FactoryBot.create(:todo_list) }
+
+    context 'index' do
+        # is part of show todo list
+    end
+
+    # moving the routes from todo_items to here
+
+=begin
     context 'new' do
         it 'responds with new item action' do
             expect(get: '/todo_items/new').to route_to('todo_items#new')
@@ -24,4 +33,6 @@ describe 'Todo Items', type: :routing do
             expect(put: '/todo_items/123').to route_to('todo_items#update', id: '123')
         end
     end
+
+=end
 end

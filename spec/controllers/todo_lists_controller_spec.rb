@@ -21,6 +21,41 @@ describe TodoListsController, type: :controller do
                 get :show, params: { id: todo_list.id }
                 expect(assigns[:todo_list]).to eq todo_list
             end
+
+            context 'with todo items' do
+                it 'finds items' do
+                    %i[todo_item todo_item_2 todo_item_3].each do |factory_id|
+                        FactoryBot.create factory_id, todo_list_id: todo_list.id
+                    end
+
+                    get :show, params: { id: todo_list.id }
+                    # get :index, params: { todo_list_id: todo_list.id }
+
+                    items = assigns[:todo_items]
+                    expect(items).to be_a(ActiveRecord::Relation)
+                    expect(items.length).to eq 3
+                end
+
+                it 'sets "completed" filter to OFF by default' do
+                    pending
+                    # get :index, params: { todo_list_id: todo_list.id }
+                    # expect(assigns[:filter_items]).to be_a(FalseClass)
+                end
+
+                it 'can filter out completed items' do
+                    pending
+                    # FactoryBot.create :todo_item
+                    # FactoryBot.create :todo_item_2, completed: true
+                    # FactoryBot.create :todo_item_3
+
+                    # get :index, { params: { filter: :pending, todo_list_id: todo_list.id } }
+
+                    # items = assigns[:items]
+                    # expect(items.length).to eq 2
+
+                    # expect(assigns[:filter_items]).to be_truthy
+                end
+            end
         end
 
         context 'with non existing todo list' do
