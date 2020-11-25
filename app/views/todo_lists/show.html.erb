@@ -4,7 +4,7 @@
 
 <ul id='todo-items'>
 <% @todo_list.todo_items.all.each do |item| %>
-    <li><%= item.description %></li>
+    <li><%= link_to todo_item_title_status(item), edit_todo_list_todo_item_path(@todo_list, item) %></li>
 <% end %>
 </ul>
 
