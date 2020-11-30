@@ -1,5 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe Aspiration, type: :model do
-    pending "add some examples to (or delete) #{__FILE__}"
+    describe 'validates' do
+        context 'title' do
+            it do
+                should validate_length_of(:title)
+                    .is_at_least(5)
+                    .is_at_most(200)
+            end
+        end
+    end
 end
