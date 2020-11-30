@@ -28,3 +28,13 @@ integrate todo items into todo lists
 2. clicking on a todo list will show you its items
 3. adding and 'completing' items on todo lists
 4. removing a list (will delete all its items)
+
+
+Goal? Objective? Theme? Pursuit? Aim? Target? Aspiration? Motive? Inspiration? Purpose?
+
+Inspiration
+-----------
+
+Things you would like to be able to do that are themselves not suitable for
+direct decomposition. e.g. Learn language, get better at Art, learn an instrument.
+
