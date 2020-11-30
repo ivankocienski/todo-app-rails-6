@@ -1,0 +1,2 @@
+class Aspiration < ApplicationRecord
+end

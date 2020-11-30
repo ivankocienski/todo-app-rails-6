@@ -47,8 +47,8 @@ describe TodoListsController, type: :controller do
                         todo_item_3: false
                     }
 
-                    items.each do |name, complete| 
-                        FactoryBot.create(name, completed: complete, todo_list: todo_list) 
+                    items.each do |name, complete|
+                        FactoryBot.create(name, completed: complete, todo_list: todo_list)
                     end
                 end
 

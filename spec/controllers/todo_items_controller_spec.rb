@@ -159,5 +159,5 @@ describe TodoItemsController, type: :controller do
                 end
             end
         end
-    end # context 'with Todo List parent'
+    end
 end

@@ -19,8 +19,8 @@ feature 'Completing items (on lists)' do
 
     def given_some_items_exist
         todo_list = TodoList.first
-        %i[todo_item todo_item_2 todo_item_3].map do |id| 
-            FactoryBot.create(id, todo_list: todo_list) 
+        %i[todo_item todo_item_2 todo_item_3].map do |id|
+            FactoryBot.create(id, todo_list: todo_list)
         end
     end
 

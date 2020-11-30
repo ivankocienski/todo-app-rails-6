@@ -24,8 +24,8 @@ feature 'Filtering items' do
             todo_item_3: false
         }
 
-        items.map do |name, complete| 
-            FactoryBot.create(name, completed: complete, todo_list: todo_list) 
+        items.map do |name, complete|
+            FactoryBot.create(name, completed: complete, todo_list: todo_list)
         end
     end
 end

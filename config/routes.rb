@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :todo_lists do
         resources :todo_items, only: %i[new edit update create]
     end
+
+    resources :aspirations, only: %i[index]
 end
