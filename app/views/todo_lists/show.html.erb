@@ -2,8 +2,15 @@
 
 <p><%= link_to 'Edit', edit_todo_list_path(@todo_list) %></p>
 
+<% if @show_only_pending %>
+    <p>Showing only pending items</p>
+
+<% else %>
+    <p><a href="?filter=pending">Show only pending items</a></p>
+<% end %>
+
 <ul id='todo-items'>
-<% @todo_list.todo_items.all.each do |item| %>
+<% @todo_items.each do |item| %>
     <li><%= link_to todo_item_title_status(item), edit_todo_list_todo_item_path(@todo_list, item) %></li>
 <% end %>
 </ul>

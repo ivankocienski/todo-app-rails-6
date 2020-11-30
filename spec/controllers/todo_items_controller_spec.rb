@@ -32,7 +32,7 @@ describe TodoItemsController, type: :controller do
 
             it 'is set up correctly' do
                 get :peek_navigation, params: { todo_list_id: todo_list.id }
-                expect(assigns[:navigation]).to eq :todo_items
+                expect(assigns[:navigation]).to eq :todo_lists
             end
         end
 

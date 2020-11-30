@@ -36,7 +36,7 @@ describe 'todo_items/edit', type: :view do
         end
 
         it 'does not have "complete" button' do
-            form_selector = "form[action='#{todo_item_path(item)}']"
+            form_selector = "form[action='#{todo_list_todo_item_path(todo_list, item)}']"
             expect(rendered).not_to have_selector(form_selector)
 
             button_selector = "input[type='submit'][value='Mark as Complete']"

@@ -27,4 +27,4 @@ integrate todo items into todo lists
 1. todo items must belong to a todo list
 2. clicking on a todo list will show you its items
 3. adding and 'completing' items on todo lists
-4. removing a list will delete all its items
+4. removing a list (will delete all its items)

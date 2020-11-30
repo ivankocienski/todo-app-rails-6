@@ -1,5 +1,6 @@
 class TodoListsController < ApplicationController
     before_action :find_todo_list, only: %i[show edit update destroy]
+    before_action :setup_navigation
 
     def index
         @todo_lists = TodoList.all
@@ -10,7 +11,13 @@ class TodoListsController < ApplicationController
     end
 
     def show
-        @todo_items = @todo_list.todo_items.all
+        @show_only_pending = filter_param
+
+        @todo_items = if @show_only_pending
+                          @todo_list.todo_items.where(completed: false)
+                      else
+                          @todo_list.todo_items
+                      end
     end
 
     def edit
@@ -47,6 +54,14 @@ class TodoListsController < ApplicationController
     end
 
     private
+
+    def setup_navigation
+        @navigation = :todo_lists
+    end
+
+    def filter_param
+        (params[:filter] || '') == 'pending'
+    end
 
     def todo_list_params
         params.require(:todo_list).permit(:title)

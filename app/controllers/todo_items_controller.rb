@@ -42,7 +42,7 @@ class TodoItemsController < ApplicationController
     end
 
     def set_navigation_mode
-        @navigation = :todo_items
+        @navigation = :todo_lists
     end
 
     def find_todo_list

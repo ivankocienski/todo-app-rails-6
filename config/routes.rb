@@ -3,8 +3,6 @@ Rails.application.routes.draw do
     root 'home#root'
     get '/about' => 'home#about'
 
-    resources :todo_items, only: %i[new edit update create]
-
     resources :todo_lists do
         resources :todo_items, only: %i[new edit update create]
     end

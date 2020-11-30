@@ -1,27 +1,46 @@
 require 'rails_helper'
 
 describe 'todo_lists/show', type: :view do
-    it 'has a title' do
-        assign :todo_list, FactoryBot.create(:todo_list, title: 'A todo list title')
-        render
+    let(:todo_list) { FactoryBot.create(:todo_list) }
 
-        expect(rendered).to have_content('A todo list title')
+    before :each do
+        assign :todo_list, todo_list
     end
 
-    context 'todo items' do
-        let(:todo_list) { FactoryBot.create(:todo_list, title: 'A todo list title') }
+    it 'has a title' do
+        assign :todo_items, []
+        render
 
+        expect(rendered).to have_content('This is todo list')
+    end
+
+    context 'with todo items' do
         before :each do
             %i[todo_item todo_item_2 todo_item_3].each do |factory_id|
                 FactoryBot.create(factory_id, todo_list: todo_list)
             end
+
+            assign :todo_items, todo_list.todo_items
         end
 
         it 'shows us a list' do
-            assign :todo_list, todo_list
             render
-
             expect(rendered).to have_selector('ul#todo-items li', count: 3)
+        end
+
+        context 'with item filter' do
+            it 'renders filter link when not set' do
+                render
+                expect(rendered).to have_selector('a', text: 'Show only pending items')
+            end
+
+            it 'does not render filter link when set' do
+                assign :show_only_pending, true
+                render
+
+                expect(rendered).not_to have_selector('a', text: 'Show only pending items')
+                expect(rendered).to have_content('Showing only pending items')
+            end
         end
     end
 end
