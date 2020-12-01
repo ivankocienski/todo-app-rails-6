@@ -38,3 +38,13 @@ Aspiration
 Things you would like to be able to do that are themselves not suitable for
 direct decomposition. e.g. Learn language, get better at Art, learn an instrument.
 
+1. see aspirations
+2. add new aspiration
+3. edit aspiration
+4. remove aspiration
+
+
+error feedback
+- todo list (create, update)
+- todo item (create)
+- aspiration (create, update)

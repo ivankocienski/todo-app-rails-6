@@ -7,18 +7,18 @@ describe 'Aspirations', type: :routing do
         end
     end
 
-    #     context 'new' do
-    #         it 'responds with new item action' do
-    #             expect(get: '/todo_lists/new').to route_to('todo_lists#new')
-    #         end
-    #     end
-    #
-    #     context 'create' do
-    #         it 'routes to correct action' do
-    #             expect(post: '/todo_lists').to route_to('todo_lists#create')
-    #         end
-    #     end
-    #
+    context 'new' do
+        it 'responds with new item action' do
+            expect(get: '/aspirations/new').to route_to('aspirations#new')
+        end
+    end
+
+    context 'create' do
+        it 'routes to correct action' do
+            expect(post: '/aspirations').to route_to('aspirations#create')
+        end
+    end
+
     #     context 'show' do
     #         it 'routes to correct action' do
     #             expect(get: '/todo_lists/123').to route_to('todo_lists#show', id: '123')

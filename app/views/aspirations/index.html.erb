@@ -1,5 +1,7 @@
 <h1>Your Aspirations</h1>
 
+<p><%= link_to 'Add Aspiration', new_aspiration_path %></p>
+
 <ul id='aspirations'>
 <% @aspirations.each do |aspiration| %>
     <li><%= aspiration.title %>
