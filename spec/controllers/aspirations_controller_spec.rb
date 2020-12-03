@@ -1,6 +1,39 @@
 require 'rails_helper'
 
 describe AspirationsController, type: :controller do
+    context '#find_aspiration_from_id filter' do
+        controller do
+            def show
+                render text: ''
+            end
+        end
+
+        it 'sets up aspiration object' do
+            aspiration = FactoryBot.create(:aspiration)
+            get :show, params: { id: aspiration.id }
+            expect(assigns[:aspiration]).to be_a(Aspiration)
+        end
+
+        it 'redirects with feedback message when not found' do
+            get :show, params: { id: '123' }
+            expect(response).to redirect_to(aspirations_path)
+            expect(flash[:error]).to eq 'Could not find Aspiration with that ID'
+        end
+    end
+
+    context 'navigation' do
+        controller do
+            def index
+                render text: ''
+            end
+        end
+
+        it 'sets up aspiration navigation mode' do
+            get :index
+            expect(assigns[:navigation]).to eq :aspirations
+        end
+    end
+
     context '#index' do
         it 'exists' do
             get :index
@@ -126,10 +159,12 @@ describe AspirationsController, type: :controller do
         end
 
         context 'with invalid params' do
-            let(:bad_aspiration_params) { {
-                title: '',
-                description: ''
-            } }
+            let(:bad_aspiration_params) do
+                {
+                    title: '',
+                    description: ''
+                }
+            end
 
             it 'renders edit view' do
                 put :update, params: { id: aspiration.id, aspiration: bad_aspiration_params }

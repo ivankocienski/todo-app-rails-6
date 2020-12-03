@@ -12,8 +12,7 @@ describe 'aspirations/new', type: :view do
 
     it 'has form' do
         # form
-        path = "/aspirations"
-        form_filter = "form[action='#{path}'][method='post']"
+        form_filter = "form[action='/aspirations'][method='post']"
         expect(rendered).to have_selector(form_filter)
     end
 end

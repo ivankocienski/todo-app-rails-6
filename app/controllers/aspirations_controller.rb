@@ -1,4 +1,7 @@
 class AspirationsController < ApplicationController
+    before_action :find_aspiration_from_id, only: %i[show edit update destroy]
+    before_action :setup_navigation
+
     def index
         @aspirations = Aspiration.all
     end
@@ -7,13 +10,9 @@ class AspirationsController < ApplicationController
         @aspiration = Aspiration.new
     end
 
-    def show
-        @aspiration = Aspiration.find_by_id(params[:id])
-    end
+    def show; end
 
-    def edit
-        @aspiration = Aspiration.find_by_id(params[:id])
-    end
+    def edit; end
 
     def create
         @aspiration = Aspiration.new(aspiration_params)
@@ -28,7 +27,6 @@ class AspirationsController < ApplicationController
     end
 
     def update
-        @aspiration = Aspiration.find_by_id(params[:id])
         @aspiration.update! aspiration_params
 
         flash[:info] = 'Aspiration saved'
@@ -40,7 +38,6 @@ class AspirationsController < ApplicationController
     end
 
     def destroy
-        @aspiration = Aspiration.find_by_id(params[:id])
         @aspiration.destroy
 
         flash[:info] = 'Aspiration has been deleted'
@@ -53,4 +50,15 @@ class AspirationsController < ApplicationController
         params.require(:aspiration).permit(:title, :description)
     end
 
+    def setup_navigation
+        @navigation = :aspirations
+    end
+
+    def find_aspiration_from_id
+        @aspiration = Aspiration.find_by_id(params[:id])
+        return if @aspiration
+
+        flash[:error] = 'Could not find Aspiration with that ID'
+        redirect_to(aspirations_path)
+    end
 end
