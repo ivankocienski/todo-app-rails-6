@@ -37,10 +37,9 @@ describe 'Aspirations', type: :routing do
         end
     end
 
-    #
-    #     context 'delete' do
-    #         it 'routes to "delete" action' do
-    #             expect(delete: '/todo_lists/123').to route_to('todo_lists#destroy', id: '123')
-    #         end
-    #     end
+    context 'delete' do
+        it 'routes to "delete" action' do
+            expect(delete: '/aspirations/123').to route_to('aspirations#destroy', id: '123')
+        end
+    end
 end

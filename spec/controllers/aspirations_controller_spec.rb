@@ -142,4 +142,22 @@ describe AspirationsController, type: :controller do
             end
         end
     end
+
+    context '#destroy' do
+        let(:aspiration) { FactoryBot.create(:aspiration) }
+
+        it 'does a redirect with message' do
+            delete :destroy, params: { id: aspiration.id }
+            expect(response).to redirect_to(aspirations_path)
+            expect(flash[:info]).to eq 'Aspiration has been deleted'
+        end
+
+        it 'destroys record' do
+            aspiration # create before expect block
+
+            expect do
+                delete :destroy, params: { id: aspiration.id }
+            end.to change(Aspiration, :count).by(-1)
+        end
+    end
 end

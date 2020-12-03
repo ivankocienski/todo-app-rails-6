@@ -39,6 +39,14 @@ class AspirationsController < ApplicationController
         render 'edit'
     end
 
+    def destroy
+        @aspiration = Aspiration.find_by_id(params[:id])
+        @aspiration.destroy
+
+        flash[:info] = 'Aspiration has been deleted'
+        redirect_to aspirations_path
+    end
+
     private
 
     def aspiration_params

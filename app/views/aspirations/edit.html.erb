@@ -1,5 +1,7 @@
 <h1>Edit Aspiration</h1>
 
+<p><%= button_to 'Delete', aspiration_path(@aspiration), method: :delete %></p>
+
 <%= form_for @aspiration do |form| %>
     <fieldset>
         <%= form.label :title %>
