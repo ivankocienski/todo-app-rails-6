@@ -4,6 +4,6 @@
 
 <ul id='aspirations'>
 <% @aspirations.each do |aspiration| %>
-    <li><%= aspiration.title %>
+    <li><%= link_to aspiration.title, aspiration_path(aspiration) %>
 <% end %>
 </ul>

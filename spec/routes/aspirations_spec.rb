@@ -19,23 +19,24 @@ describe 'Aspirations', type: :routing do
         end
     end
 
-    #     context 'show' do
-    #         it 'routes to correct action' do
-    #             expect(get: '/todo_lists/123').to route_to('todo_lists#show', id: '123')
-    #         end
-    #     end
-    #
-    #     context 'edit' do
-    #         it 'routes to "edit" action' do
-    #             expect(get: '/todo_lists/123/edit').to route_to('todo_lists#edit', id: '123')
-    #         end
-    #     end
-    #
-    #     context 'update' do
-    #         it 'routes to "update" action' do
-    #             expect(put: '/todo_lists/123').to route_to('todo_lists#update', id: '123')
-    #         end
-    #     end
+    context 'show' do
+        it 'routes to correct action' do
+            expect(get: '/aspirations/123').to route_to('aspirations#show', id: '123')
+        end
+    end
+
+    context 'edit' do
+        it 'routes to "edit" action' do
+            expect(get: '/aspirations/123/edit').to route_to('aspirations#edit', id: '123')
+        end
+    end
+
+    context 'update' do
+        it 'routes to "update" action' do
+            expect(patch: '/aspirations/123').to route_to('aspirations#update', id: '123')
+        end
+    end
+
     #
     #     context 'delete' do
     #         it 'routes to "delete" action' do

@@ -7,6 +7,14 @@ class AspirationsController < ApplicationController
         @aspiration = Aspiration.new
     end
 
+    def show
+        @aspiration = Aspiration.find_by_id(params[:id])
+    end
+
+    def edit
+        @aspiration = Aspiration.find_by_id(params[:id])
+    end
+
     def create
         @aspiration = Aspiration.new(aspiration_params)
         @aspiration.save!
@@ -17,6 +25,18 @@ class AspirationsController < ApplicationController
     rescue ActiveRecord::RecordInvalid
         flash.now[:error] = 'The aspiration was not saved'
         render 'new'
+    end
+
+    def update
+        @aspiration = Aspiration.find_by_id(params[:id])
+        @aspiration.update! aspiration_params
+
+        flash[:info] = 'Aspiration saved'
+        redirect_to aspiration_path(@aspiration)
+
+    rescue ActiveRecord::RecordInvalid
+        flash.now[:error] = 'The aspiration was not saved'
+        render 'edit'
     end
 
     private
