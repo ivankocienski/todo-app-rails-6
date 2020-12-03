@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     end
 
     resources :aspirations
+
+    resources :progress_logs, only: %i[index show new create]
 end

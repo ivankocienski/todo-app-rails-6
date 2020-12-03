@@ -1,0 +1,9 @@
+<h1>Progress Logs</h1>
+
+<p>The work you have done thus far</p>
+
+<ul id='progress-logs'>
+<% @progress_logs.each do |progress_log| %>
+  <li><%= progress_log_on_day_s(progress_log) %></li>
+<% end %>
+</ul>

@@ -44,6 +44,18 @@ direct decomposition. e.g. Learn language, get better at Art, learn an instrumen
 4. remove aspiration
 
 
+ProgressLog
+------
+
+Given that aspirations guide todo_lists i would like to keep a log of the 
+progress made each day.
+
+1. see day log
+2. add day log (cant post multiple day logs for same day)
+3. purge day logs?
+
+
+
 error feedback
 - todo list (create, update)
 - todo item (create)

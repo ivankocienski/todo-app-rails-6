@@ -1,0 +1,2 @@
+class ProgressLog < ApplicationRecord
+end
