@@ -7,17 +7,17 @@ describe 'Progress Logs', type: :routing do
         end
     end
 
-    #    context 'new' do
-    #        it 'responds with new item action' do
-    #            expect(get: '/progress_logs/new').to route_to('progress_logs#new')
-    #        end
-    #    end
+    context 'new' do
+        it 'responds with new item action' do
+            expect(get: '/progress_logs/new').to route_to('progress_logs#new')
+        end
+    end
 
-    #    context 'create' do
-    #        it 'routes to correct action' do
-    #            expect(post: '/progress_logs').to route_to('progress_logs#create')
-    #        end
-    #    end
+    context 'create' do
+        it 'routes to correct action' do
+            expect(post: '/progress_logs').to route_to('progress_logs#create')
+        end
+    end
 
     #    context 'show' do
     #        it 'routes to correct action' do

@@ -1,2 +1,12 @@
-<h1>ProgressLogs#new</h1>
-<p>Find me in app/views/progress_logs/new.html.erb</p>
+<h1>Write Progress Log</h1>
+
+<%= form_for @progress_log do |form| %>
+    <%= form.hidden_field :on_day %>
+    <fieldset>
+        <%= form.label :description %>
+        <%= form.text_area :description %>
+    </fieldset>
+    <fieldset>
+        <%= form.submit 'Save' %>
+    </fieldset>
+<% end %>

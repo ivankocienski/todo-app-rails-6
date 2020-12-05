@@ -2,6 +2,8 @@
 
 <p>The work you have done thus far</p>
 
+<p><%= link_to 'Write progress log', new_progress_log_path %></p>
+
 <ul id='progress-logs'>
 <% @progress_logs.each do |progress_log| %>
   <li><%= progress_log_on_day_s(progress_log) %></li>
