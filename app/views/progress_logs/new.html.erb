@@ -5,6 +5,7 @@
     <fieldset>
         <%= form.label :description %>
         <%= form.text_area :description %>
+        <%= field_errors_for @progress_log, :description %>
     </fieldset>
     <fieldset>
         <%= form.submit 'Save' %>

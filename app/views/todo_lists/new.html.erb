@@ -4,6 +4,7 @@
     <fieldset>
         <%= form.label :title %>
         <%= form.text_field :title %>
+        <%= field_errors_for @todo_list, :title %>
     </fieldset>
     <fieldset>
         <%= form.submit 'Create Todo list'%>
