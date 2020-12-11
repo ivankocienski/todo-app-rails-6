@@ -17,4 +17,16 @@ module ApplicationHelper
 
         html.html_safe
     end
+
+    def render_flash(flash)
+        return '' if flash.empty?
+
+        html = '<div id="flash-box">'
+        flash.each do |severity, message|
+            html += "<p class='flash' id='flash-#{severity}'>#{message}</p>"
+        end
+        html += '</div>'
+
+        html.html_safe
+    end
 end

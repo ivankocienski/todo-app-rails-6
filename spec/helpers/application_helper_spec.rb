@@ -29,4 +29,17 @@ describe ApplicationHelper, type: :helper do
             expect(html).to have_selector('ul.field-errors li')
         end
     end
+
+    context '#render_flash' do
+        it 'returns nothing when empty' do
+            html = helper.render_flash({})
+            expect(html).to be_empty
+        end
+
+        it 'has error when set' do
+            flash = { error: 'A problem occurred' }
+            html = helper.render_flash(flash)
+            expect(html).to have_selector('#flash-box #flash-error.flash', text: 'A problem occurred')
+        end
+    end
 end
