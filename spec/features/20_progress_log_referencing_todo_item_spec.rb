@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 feature 'Progress' do
+    let(:long_description) do
+        'I have worked on this nugget. It was a hard job to do but gosh darn it I kept at it.'
+    end
+
     it 'can be linked to todo_item' do
         given_a_todo_list_exists
         given_a_todo_item_exists
@@ -9,7 +13,7 @@ feature 'Progress' do
         click_link 'Progress'
         click_link 'Write progress log'
 
-        fill_in 'Description', with: 'I have worked on this nugget. It was a hard job to do but gosh darn it I kept at it.'
+        fill_in 'Description', with: long_description
         select 'A description of the task to do', from: 'Todo item'
         click_button 'Save'
 

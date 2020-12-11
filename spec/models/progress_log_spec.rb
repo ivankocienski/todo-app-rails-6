@@ -27,7 +27,7 @@ describe ProgressLog, type: :model do
                 }
 
                 progress_log = ProgressLog.create(params)
-                expect(progress_log).to be_valid  
+                expect(progress_log).to be_valid
             end
         end
 
