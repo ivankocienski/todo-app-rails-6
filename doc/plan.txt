@@ -45,7 +45,7 @@ direct decomposition. e.g. Learn language, get better at Art, learn an instrumen
 
 
 ProgressLog
-------
+-----------
 
 Given that aspirations guide todo_lists i would like to keep a log of the 
 progress made each day.
@@ -60,3 +60,18 @@ error feedback
 - todo list (create, update)
 - todo item (create)
 - aspiration (create, update)
+
+
+
+## Tying aspirations to todo lists or todo items to progress logs
+
+
+Todo list logging progress 
+--------------------------
+
+as a user i would like to log progress on a specific todo list item.
+this way i can see which items i am working on in the progress log and
+i can see how much a todo item has been worked on.
+
+1. when creating progress log, reference todo item.
+2. 

@@ -23,6 +23,11 @@ describe ProgressLogsController, type: :controller do
             get :new
             expect(assigns[:progress_log]).to be_a(ProgressLog)
         end
+
+        it 'has open_todo_items' do
+            get :new
+            expect(assigns[:open_todo_items]).to be_a(ActiveRecord::Relation)
+        end
     end
 
     context '#create' do
@@ -36,7 +41,6 @@ describe ProgressLogsController, type: :controller do
 
             it 'does a redirect with message' do
                 post :create, params: { progress_log: progress_log_params }
-
                 expect(response).to redirect_to(progress_logs_path)
                 expect(flash[:info]).to eq 'Progress has been logged!'
             end
@@ -47,6 +51,16 @@ describe ProgressLogsController, type: :controller do
                 progress_log = assigns[:progress_log]
                 expect(progress_log).to be_a(ProgressLog)
                 expect(progress_log).to be_persisted
+            end
+
+            it 'associates with todo_item when present' do
+                todo_item = FactoryBot.create(:todo_item)
+                params = progress_log_params
+                params[:todo_item_id] = todo_item.id
+                post :create, params: { progress_log: params }
+
+                progress_log = assigns[:progress_log]
+                expect(progress_log.todo_item).to be_a(TodoItem)
             end
         end
 
@@ -66,7 +80,18 @@ describe ProgressLogsController, type: :controller do
 
             it 'does not save' do
                 post :create, params: { progress_log: bad_progress_log_params }
-                expect(assigns[:progress_log]).not_to be_persisted
+                expect(assigns[:progress_log]).not_to be_valid
+            end
+
+            it 'does not save with invalid todo_item_id' do
+                bad_params = {
+                    on_day: DateTime.new,
+                    description: 'This is a long description of the pogress I have made today',
+                    todo_item_id: 1234
+                }
+
+                post :create, params: { progress_log: bad_params }
+                expect(assigns[:progress_log]).not_to be_valid
             end
         end
     end

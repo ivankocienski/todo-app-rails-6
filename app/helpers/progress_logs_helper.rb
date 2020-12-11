@@ -4,4 +4,13 @@ module ProgressLogsHelper
         ordinal_day = date.mday.ordinalize
         date.strftime("%A #{ordinal_day} %B, %Y")
     end
+
+    def open_todo_item_options(options)
+        return [] if options.nil?
+
+        [['No Todo Item', '']] +
+            options.map do |opt|
+                [opt.description, opt.id]
+            end
+    end
 end

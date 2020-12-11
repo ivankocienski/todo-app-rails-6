@@ -5,6 +5,7 @@ class ProgressLogsController < ApplicationController
 
     def new
         @progress_log = ProgressLog.new
+        @open_todo_items = TodoItem.where(completed: false)
     end
 
     def create
@@ -22,6 +23,6 @@ class ProgressLogsController < ApplicationController
     private
 
     def progress_log_params
-        params.require(:progress_log).permit(:on_day, :description)
+        params.require(:progress_log).permit(:on_day, :description, :todo_item_id)
     end
 end

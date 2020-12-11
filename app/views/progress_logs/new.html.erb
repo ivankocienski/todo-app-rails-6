@@ -3,6 +3,11 @@
 <%= form_for @progress_log do |form| %>
     <%= form.hidden_field :on_day %>
     <fieldset>
+        <%= form.label :todo_item_id %>
+        <%= form.select :todo_item_id, open_todo_item_options(@open_todo_items) %>
+        <%= field_errors_for @progress_log, :todo_item_id %>
+    </fieldset>
+    <fieldset>
         <%= form.label :description %>
         <%= form.text_area :description %>
         <%= field_errors_for @progress_log, :description %>
