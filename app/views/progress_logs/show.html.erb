@@ -1,0 +1,9 @@
+<h1><%=progress_log_on_day_s(@progress_log) %></h1>
+
+<p><%= @progress_log.description %></p>
+
+<% if @progress_log.todo_item.present? %>
+<p>
+    For Todo Item <%= progress_log_todo_item_link(@progress_log) %>
+</p>
+<% end %>

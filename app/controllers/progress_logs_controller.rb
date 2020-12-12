@@ -3,6 +3,14 @@ class ProgressLogsController < ApplicationController
         @progress_logs = ProgressLog.all
     end
 
+    def show
+        @progress_log = ProgressLog.find(params[:id])
+
+    rescue ActiveRecord::RecordNotFound
+        flash[:error] = 'Could not find progress log with that ID'
+        redirect_to progress_logs_path
+    end
+
     def new
         @progress_log = ProgressLog.new
         @open_todo_items = TodoItem.where(completed: false)

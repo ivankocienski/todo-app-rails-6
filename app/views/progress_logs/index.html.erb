@@ -6,6 +6,6 @@
 
 <ul id='progress-logs'>
 <% @progress_logs.each do |progress_log| %>
-  <li><%= progress_log_on_day_s(progress_log) %></li>
+  <li><%= link_to progress_log_on_day_s(progress_log), progress_log_path(progress_log) %></li>
 <% end %>
 </ul>

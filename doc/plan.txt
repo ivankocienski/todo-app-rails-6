@@ -74,4 +74,5 @@ this way i can see which items i am working on in the progress log and
 i can see how much a todo item has been worked on.
 
 1. when creating progress log, reference todo item.
-2. 
+2. seeing a progress log details
+3. seeing the logged progress on todo_items

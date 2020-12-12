@@ -13,6 +13,24 @@ describe ProgressLogsController, type: :controller do
         end
     end
 
+    context '#show' do
+        context 'without valid ID' do
+            it 'redirects to index with message' do
+                get :show, params: { id: 123 }
+                expect(response).to redirect_to(progress_logs_path)
+                expect(flash[:error]).to eq 'Could not find progress log with that ID'
+            end
+        end
+
+        context 'with valid ID' do
+            it 'sets up progress_log and renders action' do
+                get :show, params: { id: FactoryBot.create(:progress_log) }
+                expect(assigns[:progress_log]).to be_a(ProgressLog)
+                expect(response).to render_template('show')
+            end
+        end
+    end
+
     context '#new' do
         it 'renders page' do
             get :new

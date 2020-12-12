@@ -19,9 +19,9 @@ describe 'Progress Logs', type: :routing do
         end
     end
 
-    #    context 'show' do
-    #        it 'routes to correct action' do
-    #            expect(get: '/progress_logs/123').to route_to('progress_logs#show', id: '123')
-    #        end
-    #    end
+    context 'show' do
+        it 'routes to correct action' do
+            expect(get: '/progress_logs/123').to route_to('progress_logs#show', id: '123')
+        end
+    end
 end
