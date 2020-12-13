@@ -12,6 +12,7 @@ feature 'Completing items (on lists)' do
         click_link 'This is todo list'
 
         click_link 'Alpha alpha alpha'
+        click_link 'edit'
         click_button 'Mark as Complete'
 
         expect(page).to have_content('Alpha alpha alpha (done)')

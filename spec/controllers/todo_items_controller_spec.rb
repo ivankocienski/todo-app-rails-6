@@ -71,6 +71,12 @@ describe TodoItemsController, type: :controller do
 
                     expect(assigns[:item]).to eq(existing_item)
                 end
+
+                it 'sets up progress logs' do
+                    get :show, { params: { id: existing_item.id, todo_list_id: todo_list.id } }
+
+                    expect(assigns[:progress_logs]).to be_a(ActiveRecord::Relation)
+                end
             end
 
             context 'with bad item ID' do

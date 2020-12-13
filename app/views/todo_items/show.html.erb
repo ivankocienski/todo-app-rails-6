@@ -1,1 +1,13 @@
 <h1><%= @item.description %></h1>
+
+<p><%= link_to 'edit', edit_todo_list_todo_item_path(@todo_list, @item) %></p>
+
+<p>In Todo List <%= link_to @todo_list.title, todo_list_path(@todo_list) %></p>
+
+<% unless @progress_logs.empty? %>
+<ul id='progress_logs'>
+<% @progress_logs.each do |progress_log| %>
+    <li><%= link_to progress_log.description, progress_log_path(progress_log) %></li>
+<% end %>
+</ul>
+<% end %>

@@ -4,6 +4,7 @@ class TodoItemsController < ApplicationController
 
     def show
         @item = TodoItem.find(params[:id])
+        @progress_logs = @item.progress_logs
 
     rescue ActiveRecord::RecordNotFound
         flash.now[:error] = 'Todo Item not found'
