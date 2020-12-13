@@ -54,7 +54,36 @@ describe TodoItemsController, type: :controller do
         end
 
         context 'index' do
-            # this functionality is in the 'show todo items' controller
+            # this functionality is in the 'todo_lists#show' action
+        end
+
+        context 'show' do
+            context 'with existing item' do
+                let(:existing_item) { FactoryBot.create(:todo_item) }
+
+                it 'renders show view' do
+                    get :show, { params: { id: existing_item.id, todo_list_id: todo_list.id } }
+                    expect(response).to render_template('todo_items/show')
+                end
+
+                it 'sets up an Item' do
+                    get :show, { params: { id: existing_item.id, todo_list_id: todo_list.id } }
+
+                    expect(assigns[:item]).to eq(existing_item)
+                end
+            end
+
+            context 'with bad item ID' do
+                it 'fails gracefully' do
+                    get :show, { params: { id: 123, todo_list_id: todo_list.id } }
+                    expect(response.status).to eq 404
+                end
+
+                it 'has message' do
+                    get :show, { params: { id: 123, todo_list_id: todo_list.id } }
+                    expect(flash.now[:error]).to eq 'Todo Item not found'
+                end
+            end
         end
 
         context 'new' do

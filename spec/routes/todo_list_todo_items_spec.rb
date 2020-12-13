@@ -12,6 +12,13 @@ describe 'Todo List Todo Items', type: :routing do
         end
     end
 
+    context 'show' do
+        it 'routes to "show" action' do
+            path = "/todo_lists/#{todo_list.id}/todo_items/123"
+            expect(get: path).to route_to('todo_items#show', id: '123', todo_list_id: todo_list.id.to_s)
+        end
+    end
+
     context 'create' do
         it 'routes to correct action' do
             path = "/todo_lists/#{todo_list.id}/todo_items"

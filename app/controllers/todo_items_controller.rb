@@ -2,6 +2,15 @@ class TodoItemsController < ApplicationController
     before_action :set_navigation_mode
     before_action :find_todo_list
 
+    def show
+        @item = TodoItem.find(params[:id])
+
+    rescue ActiveRecord::RecordNotFound
+        flash.now[:error] = 'Todo Item not found'
+        @item = TodoItem.new
+        render 'show', status: 404
+    end
+
     def new
         @item = TodoItem.new
     end

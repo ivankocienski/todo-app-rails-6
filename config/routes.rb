@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     get '/about' => 'home#about'
 
     resources :todo_lists do
-        resources :todo_items, only: %i[new edit update create]
+        resources :todo_items, only: %i[show new edit update create]
     end
 
     resources :aspirations

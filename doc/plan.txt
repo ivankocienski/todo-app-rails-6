@@ -76,3 +76,15 @@ i can see how much a todo item has been worked on.
 1. when creating progress log, reference todo item.
 2. seeing a progress log details
 3. seeing the logged progress on todo_items
+
+
+- resource not found
+  on show/edit views when a resource is not found
+  render a 'resource' not found page with 404 status.
+  at the moment some actions use redirects, which is
+  not RESTful resource spec
+  - todo_list
+  - aspirations
+  - todo_items
+  - progress_logs
+  
