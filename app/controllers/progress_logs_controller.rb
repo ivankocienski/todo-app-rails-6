@@ -1,4 +1,6 @@
 class ProgressLogsController < ApplicationController
+    before_action :set_navigation
+
     def index
         @progress_logs = ProgressLog.all
     end
@@ -32,5 +34,9 @@ class ProgressLogsController < ApplicationController
 
     def progress_log_params
         params.require(:progress_log).permit(:on_day, :description, :todo_item_id)
+    end
+
+    def set_navigation
+        @navigation = :progress_logs
     end
 end
