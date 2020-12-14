@@ -1,6 +1,6 @@
 <h1>Write Progress Log</h1>
 
-<%= form_for @progress_log do |form| %>
+<%= form_for @progress_log, html: { class: 'form' } do |form| %>
     <%= form.hidden_field :on_day %>
     <fieldset>
         <%= form.label :todo_item_id %>
@@ -9,10 +9,10 @@
     </fieldset>
     <fieldset>
         <%= form.label :description %>
-        <%= form.text_area :description %>
+        <%= form.text_area :description, class: 'text' %>
         <%= field_errors_for @progress_log, :description %>
     </fieldset>
-    <fieldset>
-        <%= form.submit 'Save' %>
+    <fieldset class='buttons'>
+        <%= form.submit 'Save', class: 'button' %>
     </fieldset>
 <% end %>

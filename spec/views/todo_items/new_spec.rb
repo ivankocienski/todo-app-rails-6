@@ -30,7 +30,7 @@ describe 'todo_items/new', type: :view do
         expect(rendered).to have_selector(field_input)
 
         # submit
-        submit_filter = "form input[type='submit'][value='Create Todo item']"
+        submit_filter = "form input[type='submit'][value='Create']"
         expect(rendered).to have_selector(submit_filter)
     end
 end

@@ -1,6 +1,6 @@
 class AspirationsController < ApplicationController
-    before_action :find_aspiration_from_param_id, only: %i[show edit update destroy]
     before_action :setup_navigation
+    before_action :find_aspiration_from_param_id, only: %i[show edit update destroy]
 
     def index
         @aspirations = Aspiration.all

@@ -1,16 +1,16 @@
 <h1>Edit <%= @todo_list.title %></h1>
 
 <div>
-    <%= button_to 'Delete', todo_list_path(@todo_list), method: :delete%>
+    <%= button_to 'Delete', todo_list_path(@todo_list), method: :delete %>
 </div>
 
-<%= form_for @todo_list do |form | %>
+<%= form_for @todo_list, html: { class: 'form' } do |form | %>
     <fieldset>
         <%= form.label :title %>
-        <%= form.text_field :title %>
+        <%= form.text_field :title, class: 'text' %>
         <%= field_errors_for @todo_list, :title %>
     </fieldset>
-    <fieldset>
-        <%= form.submit 'Update' %>
+    <fieldset class='buttons'>
+        <%= form.submit 'Update', class: 'button' %>
     </fieldset>
 <% end %>

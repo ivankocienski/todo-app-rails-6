@@ -1,0 +1,14 @@
+main {
+  width: 80%;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+main #content {
+  padding: 20px;
+}
+
+#content h1 {
+  font-size: 2.2em;
+  margin-bottom: 0.5em;
+}

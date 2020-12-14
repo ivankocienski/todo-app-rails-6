@@ -1,6 +1,6 @@
 class TodoListsController < ApplicationController
-    before_action :find_todo_list, only: %i[show edit update destroy]
     before_action :setup_navigation
+    before_action :find_todo_list, only: %i[show edit update destroy]
 
     def index
         @todo_lists = TodoList.all

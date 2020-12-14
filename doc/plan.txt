@@ -87,4 +87,28 @@ i can see how much a todo item has been worked on.
   - aspirations
   - todo_items
   - progress_logs
+
+
+styling
+-------
+
+To make the site more usable better styling and layout needs to be
+considered. This will aid users in understanding what they are 
+looking at and help them understand any errors they need to address.
+
+- in general
+  - flash
+  - forms
+  - form errors
+  - form hints
+  - lists
   
+- on resources
+  - aspirations
+    - edit, index, new, show
+  - todo_lists
+    - edit, index, new, show
+  - todo_items
+    - edit, new, show
+  - progress_logs
+    - index, new, show

@@ -1,12 +1,12 @@
 <h1>Add New Todo Item</h1>
 
-<%= form_for @item, url: todo_list_todo_items_path(@todo_list) do |form| %>
+<%= form_for @item, url: todo_list_todo_items_path(@todo_list), html: { class: 'form' } do |form| %>
     <fieldset>
         <%= form.label :description %>
-        <%= form.text_field :description %>
+        <%= form.text_field :description, class: 'text' %>
         <%= field_errors_for @todo_list, :description %>
     </fieldset>
-    <fieldset>
-        <%= form.submit %>
+    <fieldset class='buttons'>
+        <%= form.submit 'Create', class: 'button' %>
     </fieldset>
 <% end %>

@@ -11,7 +11,7 @@ feature 'Creating a new Todo Item on Todo List' do
         click_link 'Add New Item...'
 
         fill_in 'Description', with: 'This is a new item description on a todo list'
-        click_button 'Create Todo item'
+        click_button 'Create'
 
         expect(page).to have_selector('ul li', count: 1)
         expect(page).to have_content('This is a new item description on a todo list')

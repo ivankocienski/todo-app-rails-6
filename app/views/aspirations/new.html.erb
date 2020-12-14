@@ -1,15 +1,15 @@
 <h1>Add Aspiration</h1>
 
-<%= form_for @aspiration do |form| %>
+<%= form_for @aspiration, html: { class: 'form' } do |form| %>
     <fieldset>
         <%= form.label :title %>
-        <%= form.text_field :title %>
+        <%= form.text_field :title, class: 'text' %>
     </fieldset>
     <fieldset>
         <%= form.label :description %>
-        <%= form.text_area :description %>
+        <%= form.text_area :description, class: 'text' %>
     </fieldset>
-    <fieldset>
-        <%= form.submit 'Create' %>
+    <fieldset class='buttons'>
+        <%= form.submit 'Create', class: 'button' %>
     </fieldset>
 <% end %>
