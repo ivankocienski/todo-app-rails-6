@@ -1,16 +1,12 @@
 class ProgressLogsController < ApplicationController
     before_action :set_navigation
+    before_action :find_progress_log_from_param_id, only: %i[show]
 
     def index
         @progress_logs = ProgressLog.all
     end
 
     def show
-        @progress_log = ProgressLog.find(params[:id])
-
-    rescue ActiveRecord::RecordNotFound
-        flash[:error] = 'Could not find progress log with that ID'
-        redirect_to progress_logs_path
     end
 
     def new
@@ -38,5 +34,9 @@ class ProgressLogsController < ApplicationController
 
     def set_navigation
         @navigation = :progress_logs
+    end
+
+    def find_progress_log_from_param_id
+        @progress_log = ProgressLog.find(params[:id])
     end
 end

@@ -68,10 +68,6 @@ class TodoListsController < ApplicationController
     end
 
     def find_todo_list
-        @todo_list = TodoList.find_by_id(params[:id])
-        return if @todo_list
-
-        flash[:error] = 'Could not find a Todo List with that ID'
-        redirect_to todo_lists_path
+        @todo_list = TodoList.find(params[:id])
     end
 end

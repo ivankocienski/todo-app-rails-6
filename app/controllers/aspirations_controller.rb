@@ -1,5 +1,5 @@
 class AspirationsController < ApplicationController
-    before_action :find_aspiration_from_id, only: %i[show edit update destroy]
+    before_action :find_aspiration_from_param_id, only: %i[show edit update destroy]
     before_action :setup_navigation
 
     def index
@@ -54,11 +54,7 @@ class AspirationsController < ApplicationController
         @navigation = :aspirations
     end
 
-    def find_aspiration_from_id
-        @aspiration = Aspiration.find_by_id(params[:id])
-        return if @aspiration
-
-        flash[:error] = 'Could not find Aspiration with that ID'
-        redirect_to(aspirations_path)
+    def find_aspiration_from_param_id
+        @aspiration = Aspiration.find(params[:id])
     end
 end

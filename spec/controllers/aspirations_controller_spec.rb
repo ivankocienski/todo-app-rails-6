@@ -1,23 +1,25 @@
 require 'rails_helper'
 
 describe AspirationsController, type: :controller do
-    context '#find_aspiration_from_id filter' do
+    let(:aspiration) { FactoryBot.create(:aspiration) }
+
+    context '#find_aspiration_from_param_id filter' do
         controller do
+            before_action :find_aspiration_from_param_id
+
             def show
                 render text: ''
             end
         end
 
         it 'sets up aspiration object' do
-            aspiration = FactoryBot.create(:aspiration)
             get :show, params: { id: aspiration.id }
             expect(assigns[:aspiration]).to be_a(Aspiration)
         end
 
-        it 'redirects with feedback message when not found' do
+        it 'responds appropriately when aspiration not found' do
             get :show, params: { id: '123' }
-            expect(response).to redirect_to(aspirations_path)
-            expect(flash[:error]).to eq 'Could not find Aspiration with that ID'
+            expect(response.status).to eq 404
         end
     end
 
@@ -42,7 +44,7 @@ describe AspirationsController, type: :controller do
 
         it 'finds Aspirations' do
             get :index
-            expect(assigns[:aspirations]).not_to be_nil
+            expect(assigns[:aspirations]).to be_a(ActiveRecord::Relation)
         end
     end
 
@@ -68,7 +70,6 @@ describe AspirationsController, type: :controller do
 
     context '#edit' do
         it 'shows aspiration edit page' do
-            aspiration = FactoryBot.create(:aspiration)
             get :edit, params: { id: aspiration.id }
             expect(response).to render_template('aspirations/edit')
         end
@@ -133,8 +134,6 @@ describe AspirationsController, type: :controller do
     end
 
     context '#update' do
-        let(:aspiration) { FactoryBot.create(:aspiration) }
-
         context 'with valid parameters' do
             it 'redirects to show' do
                 aspiration_params = {
@@ -179,8 +178,6 @@ describe AspirationsController, type: :controller do
     end
 
     context '#destroy' do
-        let(:aspiration) { FactoryBot.create(:aspiration) }
-
         it 'does a redirect with message' do
             delete :destroy, params: { id: aspiration.id }
             expect(response).to redirect_to(aspirations_path)

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe 'todo_items/edit', type: :view do
-    let(:item) { FactoryBot.create(:todo_item) }
     let(:todo_list) { FactoryBot.create(:todo_list) }
+    let(:item) { FactoryBot.create(:todo_item, todo_list: todo_list) }
 
     before :each do
         assign :todo_list, todo_list
@@ -41,14 +41,6 @@ describe 'todo_items/edit', type: :view do
 
             button_selector = "input[type='submit'][value='Mark as Complete']"
             expect(rendered).not_to have_selector(button_selector)
-        end
-    end
-
-    context 'with missing item' do
-        it 'renderes appropriate message' do
-            render
-
-            expect(rendered).to have_selector('h1', text: '[Todo Item not found]')
         end
     end
 end

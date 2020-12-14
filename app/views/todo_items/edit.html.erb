@@ -1,11 +1,5 @@
-<% if @item %>
-    <h1><%= @item.description %></h1>
+<h1><%= @item.description %></h1>
 
-    <% unless @item.completed %>
-        <%= button_to 'Mark as Complete', todo_list_todo_item_path(@todo_list, @item), method: :put %>
-    <% end %>
-
-<% else %>
-    <h1>[Todo Item not found]</h1>
-    <p>An item with that ID could not be found in the database at this time</p>
+<% unless @item.completed %>
+    <%= button_to 'Mark as Complete', todo_list_todo_item_path(@todo_list, @item), method: :put %>
 <% end %>
