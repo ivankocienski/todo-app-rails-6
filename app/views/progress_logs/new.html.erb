@@ -11,6 +11,9 @@
         <%= form.label :description %>
         <%= form.text_area :description, class: 'text' %>
         <%= field_errors_for @progress_log, :description %>
+        <ul class='hint'>
+          <li>Must be at least 50 characters long</li>
+        </ul>
     </fieldset>
     <fieldset class='buttons'>
         <%= form.submit 'Save', class: 'button' %>

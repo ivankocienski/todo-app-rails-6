@@ -1,9 +1,22 @@
 module ApplicationHelper
     def navigation_link(path, mode, title)
         active = ''
-        active = 'class="active"' if @navigation == mode
+        img_src = ''
 
-        %(<a href="#{path}" #{active}>#{title}</a>).html_safe
+        if @navigation == mode
+            active = 'class="active"'
+            img_src = asset_path("nav_icon_#{mode}_on.png")
+
+        else
+            img_src = asset_path("nav_icon_#{mode}_off.png")
+        end
+
+        html  = "<a href='#{path}' #{active}>"
+        html += "<img class='icon' src='#{img_src}' />"
+        html += "<span>#{title}</span>"
+        html += '</a>'
+
+        html.html_safe
     end
 
     def field_errors_for(record, field)

@@ -11,4 +11,7 @@ This project was an excersize to walk through the development cycle of a new rai
     Sqlite
     Node.js
 
+## Acknowledgements
+
+Icons are from GNOME Project http://www.gnome.org, specifically Adwaita https://gitlab.gnome.org/GNOME/adwaita-icon-theme
 
