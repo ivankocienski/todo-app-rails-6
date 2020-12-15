@@ -9,7 +9,7 @@
     <p><a href="?filter=pending">Show only pending items</a></p>
 <% end %>
 
-<ul id='todo-items'>
+<ul class='index' id='todo-items'>
 <% @todo_items.each do |item| %>
     <li><%= link_to todo_item_title_status(item), todo_list_todo_item_path(@todo_list, item) %></li>
 <% end %>

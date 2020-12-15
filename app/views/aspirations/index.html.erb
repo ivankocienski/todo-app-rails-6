@@ -2,7 +2,7 @@
 
 <p><%= link_to 'Add Aspiration', new_aspiration_path %></p>
 
-<ul id='aspirations'>
+<ul class='index' id='aspirations'>
 <% @aspirations.each do |aspiration| %>
     <li><%= link_to aspiration.title, aspiration_path(aspiration) %>
 <% end %>

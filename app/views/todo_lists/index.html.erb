@@ -2,7 +2,7 @@
 
 <p><%= link_to 'Create New Todo List', new_todo_list_path %></p>
 
-<ul id='todo-lists'>
+<ul class='index' id='todo-lists'>
     <% @todo_lists.each do |tl| %>
         <li><%= link_to tl.title, todo_list_path(tl) %></li>
     <% end %>

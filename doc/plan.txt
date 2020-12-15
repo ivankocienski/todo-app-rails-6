@@ -100,7 +100,6 @@ looking at and help them understand any errors they need to address.
   - flash
   - forms
   - form errors
-  - form hints
   - lists
   
 - on resources
@@ -112,3 +111,9 @@ looking at and help them understand any errors they need to address.
     - edit, new, show
   - progress_logs
     - index, new, show
+
+
+form hints
+----------
+
+users should be able to see what is required for input boxes

@@ -6,10 +6,12 @@
     <fieldset>
         <%= form.label :title %>
         <%= form.text_field :title, class: 'text' %>
+        <%= field_errors_for @aspiration, :title %>
     </fieldset>
     <fieldset>
         <%= form.label :description %>
         <%= form.text_area :description, class: 'text' %>
+        <%= field_errors_for @aspiration, :description %>
     </fieldset>
     <fieldset class='buttons'>
         <%= form.submit 'Save', class: 'button' %>

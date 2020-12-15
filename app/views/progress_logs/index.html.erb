@@ -4,7 +4,7 @@
 
 <p><%= link_to 'Write progress log', new_progress_log_path %></p>
 
-<ul id='progress-logs'>
+<ul class='index' id='progress-logs'>
 <% @progress_logs.each do |progress_log| %>
   <li><%= link_to progress_log_on_day_s(progress_log), progress_log_path(progress_log) %></li>
 <% end %>
