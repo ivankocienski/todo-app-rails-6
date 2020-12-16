@@ -36,3 +36,12 @@ form input.button {
     font-size: 1.3em;
     padding: 0.65em;
 }
+
+form .hints {
+    font-size: 0.8em;
+    color: #666;
+}
+
+form .hints ul {
+    padding-left: 1em;
+}

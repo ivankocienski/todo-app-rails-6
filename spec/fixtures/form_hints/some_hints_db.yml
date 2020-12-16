@@ -1,0 +1,7 @@
+sample_model:
+    sample_field:
+        - alpha value
+        - beta value
+        - gamma value
+    empty_field:
+empty_model:        

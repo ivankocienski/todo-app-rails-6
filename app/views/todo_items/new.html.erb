@@ -4,7 +4,8 @@
     <fieldset>
         <%= form.label :description %>
         <%= form.text_field :description, class: 'text' %>
-        <%= field_errors_for @todo_list, :description %>
+        <%= field_errors_for @item, :description %>
+        <%= field_hints :todo_item, :description %>
     </fieldset>
     <fieldset class='buttons'>
         <%= form.submit 'Create', class: 'button' %>

@@ -1,0 +1,14 @@
+aspiration:
+    title:
+        - Must be between 5 and 200 characters long
+    description:
+        - Try writing something aspirational here
+progress_log:
+    description:
+        - Must be at least 50 characters long
+todo_item:
+    description:
+        - Must be between 2 and 1000 characters long
+todo_list:
+    title:
+        - Must be between 2 and 200 characters long

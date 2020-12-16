@@ -9,6 +9,7 @@
         <%= form.label :title %>
         <%= form.text_field :title, class: 'text' %>
         <%= field_errors_for @todo_list, :title %>
+        <%= field_hints :todo_list, :title %>
     </fieldset>
     <fieldset class='buttons'>
         <%= form.submit 'Update', class: 'button' %>

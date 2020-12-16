@@ -31,6 +31,22 @@ module ApplicationHelper
         html.html_safe
     end
 
+    def field_hints(model, field)
+        hints = FormHints.lookup(model, field)
+        return '' if hints.empty?
+
+        html  = '<div class="hints">'
+        html += '<h6>Hints:</h6>'
+        html += '<ul>'
+        hints.each do |hint|
+            html += "<li>#{hint}</li>"
+        end
+        html += '</ul>'
+        html += '</div>'
+
+        html.html_safe
+    end
+
     def render_flash(flash)
         return '' if flash.empty?
 

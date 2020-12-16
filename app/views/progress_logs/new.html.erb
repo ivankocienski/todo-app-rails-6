@@ -6,14 +6,13 @@
         <%= form.label :todo_item_id %>
         <%= form.select :todo_item_id, open_todo_item_options(@open_todo_items) %>
         <%= field_errors_for @progress_log, :todo_item_id %>
+        <%= field_hints :progress_log, :todo_item_id %>
     </fieldset>
     <fieldset>
         <%= form.label :description %>
         <%= form.text_area :description, class: 'text' %>
         <%= field_errors_for @progress_log, :description %>
-        <ul class='hint'>
-          <li>Must be at least 50 characters long</li>
-        </ul>
+        <%= field_hints :progress_log, :description %>
     </fieldset>
     <fieldset class='buttons'>
         <%= form.submit 'Save', class: 'button' %>

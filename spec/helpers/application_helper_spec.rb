@@ -30,6 +30,23 @@ describe ApplicationHelper, type: :helper do
         end
     end
 
+    context '#field_hints' do
+        before :each do
+            FormHints.load_from File.join(Rails.root, '/spec/fixtures/form_hints/some_hints_db.yml')
+        end
+
+        it 'returns empty string for missing hint' do
+            html = helper.field_hints(:not_mode, :not_field)
+            expect(html).to eq ''
+        end
+
+        it 'returns correct HTML for present hint' do
+            html = helper.field_hints(:sample_model, :sample_field)
+            expect(html).to have_selector('div.hints h6', text: 'Hints:')
+            expect(html).to have_selector('.hints ul li', count: 3)
+        end
+    end
+
     context '#render_flash' do
         it 'returns nothing when empty' do
             html = helper.render_flash({})
