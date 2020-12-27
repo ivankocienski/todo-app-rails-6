@@ -17,7 +17,7 @@ describe 'todo_items/show', type: :view do
 
     it 'has link to todo list' do
         render
-        path = todo_list_path(todo_list)
+        path = todo_path(todo_list)
         expect(rendered).to have_selector("a[href='#{path}']", text: 'This is todo list')
     end
 

@@ -20,7 +20,7 @@ class TodoItemsController < ApplicationController
         @item.todo_list = @todo_list
         @item.save!
 
-        redirect_to todo_list_path(@todo_list)
+        redirect_to todo_path(@todo_list)
 
     rescue ActiveRecord::RecordInvalid
         render 'new'
@@ -32,7 +32,7 @@ class TodoItemsController < ApplicationController
         flash[:info] = 'Item marked as completed'
 
     ensure
-        redirect_to todo_list_path(@todo_list)
+        redirect_to todo_path(@todo_list)
     end
 
     private
@@ -46,7 +46,7 @@ class TodoItemsController < ApplicationController
     end
 
     def find_todo_list_from_param
-        @todo_list = TodoList.find(params[:todo_list_id])
+        @todo_list = TodoList.find(params[:todo_id])
     end
 
     def find_todo_item_from_param

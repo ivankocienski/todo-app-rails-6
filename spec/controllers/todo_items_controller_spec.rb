@@ -13,14 +13,14 @@ describe TodoItemsController, type: :controller do
 
         context 'with valid todo_list ID' do
             it 'sets up @todo_list object' do
-                get :index, params: { todo_list_id: todo_list.id }
+                get :index, params: { todo_id: todo_list.id }
                 expect(assigns[:todo_list]).to be_a(TodoList)
             end
         end
 
         context 'with invalid todo_list ID' do
             it 'responds with appropriate status code' do
-                get :index, params: { todo_list_id: 123 }
+                get :index, params: { todo_id: 123 }
                 expect(response.status).to eq 404
             end
         end
@@ -35,14 +35,14 @@ describe TodoItemsController, type: :controller do
 
         context 'with valid todo_item ID' do
             it 'sets up @item object' do
-                get :show, params: { todo_list_id: todo_list.id, id: todo_item.id }
+                get :show, params: { todo_id: todo_list.id, id: todo_item.id }
                 expect(assigns[:item]).to be_a(TodoItem)
             end
         end
 
         context 'with invalid todo_item ID' do
             it 'responds with appropriate status code' do
-                get :show, params: { todo_list_id: todo_list.id, id: 123 }
+                get :show, params: { todo_id: todo_list.id, id: 123 }
                 expect(response.status).to eq 404
             end
         end
@@ -71,7 +71,7 @@ describe TodoItemsController, type: :controller do
 
     context 'show' do
         before :each do
-            get :show, { params: { id: todo_item.id, todo_list_id: todo_list.id } }
+            get :show, { params: { id: todo_item.id, todo_id: todo_list.id } }
         end
 
         it 'renders show view' do
@@ -89,19 +89,19 @@ describe TodoItemsController, type: :controller do
 
     context 'new' do
         it 'renders new view' do
-            get :new, params: { todo_list_id: todo_list.id }
+            get :new, params: { todo_id: todo_list.id }
             expect(response).to render_template('todo_items/new')
         end
 
         it 'sets up an Item' do
-            get :new, params: { todo_list_id: todo_list.id }
+            get :new, params: { todo_id: todo_list.id }
             expect(assigns[:item]).to be_a(TodoItem)
         end
     end
 
     context 'edit' do
         before :each do
-            get :edit, { params: { todo_list_id: todo_list.id, id: todo_item.id } }
+            get :edit, { params: { todo_id: todo_list.id, id: todo_item.id } }
         end
 
         it 'renders edit view' do
@@ -118,7 +118,7 @@ describe TodoItemsController, type: :controller do
             end
 
             it 'creates an item' do
-                post :create, params: { todo_list_id: todo_list.id, todo_item: new_item_params }
+                post :create, params: { todo_id: todo_list.id, todo_item: new_item_params }
 
                 expect(assigns[:item]).to be_a(TodoItem)
                 expect(assigns[:item]).to be_persisted
@@ -126,14 +126,14 @@ describe TodoItemsController, type: :controller do
             end
 
             it 'does redirect' do
-                post :create, params: { todo_list_id: todo_list.id, todo_item: new_item_params }
-                expect(response).to redirect_to("/todo_lists/#{todo_list.id}")
+                post :create, params: { todo_id: todo_list.id, todo_item: new_item_params }
+                expect(response).to redirect_to("/todo/#{todo_list.id}")
             end
         end
 
         context 'with missing fields' do
             it 'renders New action' do
-                post :create, params: { todo_list_id: todo_list.id, todo_item: { description: '' } }
+                post :create, params: { todo_id: todo_list.id, todo_item: { description: '' } }
                 expect(response).to render_template('todo_items/new')
             end
         end
@@ -141,16 +141,16 @@ describe TodoItemsController, type: :controller do
 
     context 'update' do
         it 'marks item as completed' do
-            put :update, params: { todo_list_id: todo_list.id, id: todo_item.id }
+            put :update, params: { todo_id: todo_list.id, id: todo_item.id }
 
             todo_item.reload
             expect(todo_item.completed).to be true
         end
 
         it 'redirects with message' do
-            put :update, params: { todo_list_id: todo_list.id, id: todo_item.id }
+            put :update, params: { todo_id: todo_list.id, id: todo_item.id }
 
-            expect(response).to redirect_to(todo_list_path(todo_list))
+            expect(response).to redirect_to(todo_path(todo_list))
             expect(flash[:info]).to eq 'Item marked as completed'
         end
     end

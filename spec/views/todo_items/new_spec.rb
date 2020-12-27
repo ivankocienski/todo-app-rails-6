@@ -17,7 +17,7 @@ describe 'todo_items/new', type: :view do
         render
 
         # form
-        path = "/todo_lists/#{todo_list.id}/todo_items"
+        path = "/todo/#{todo_list.id}/items"
         form_filter = "form[action='#{path}'][method='post']"
         expect(rendered).to have_selector(form_filter)
 

@@ -1,6 +1,6 @@
 <h1>Create New Todo List</h1>
 
-<%= form_for @todo_list, html: { class: 'form' } do |form| %>
+<%= form_for @todo_list, url: todo_index_path, ahtml: { class: 'form' } do |form| %>
     <fieldset>
         <%= form.label :title %>
         <%= form.text_field :title, class: 'text' %>

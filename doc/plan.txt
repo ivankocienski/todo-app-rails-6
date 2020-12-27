@@ -117,3 +117,64 @@ form hints
 ----------
 
 users should be able to see what is required for input boxes
+
+
+
+flow through
+------------
+
+So now I have built the basic models and views surrounding the problem domain
+work must proceed onto 'flow' through the application where the front end
+needs to be worked on to make the site actually usable by a user in the way
+it is intended.
+
+Can I add goals?
+Can I make todo lists?
+Can I make todo items?
+Can I mark todo items done?
+Can I log progress?
+
+Not in a "does the site do this?" way but in a "How should this be done to
+make the user's life easier?" way.
+
+What is it that users should be doing the most on the site?
+(how can we streamline this?)
+
+What is it that users should be doing infrequently on the site?
+(how can this be done easiest?)
+
+
+
+
+Flow work
+---------
+
+Aspirations: An aspiration has a Title, Subject(?), Description and Goal.
+
+1- Title: One sentence summarising description like "Improve Life Drawing"
+
+1- Description: Expansion and scoping of Title: Draw lots of people
+
+
+2- Subject: Used for tying Aspirations together. Like a subject of the aspiration. So e.g. "Art"
+
+2- Goal: The thing you will have produced to indicate success. e.g. 10 drawings in my art book.
+
+2- Follow on: The previous aspiration that led to this one (optional)
+
+
+3- State:
+  - waiting_for_start
+  - in_progress
+  - complete
+  - parked
+  - discarded
+
+4- maybe drop description and put in "goal" and "requirements" ?
+
+
+
+task
+----
+
+rename (in UI) todo_list -> todo and todo_item -> item

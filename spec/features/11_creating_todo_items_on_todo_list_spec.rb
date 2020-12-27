@@ -6,7 +6,8 @@ feature 'Creating a new Todo Item on Todo List' do
     scenario 'with valid information' do
         given_todo_list_exists
 
-        visit '/todo_lists'
+        visit '/'
+        click_link 'Todo Lists'
         click_link 'This is todo list'
         click_link 'Add New Item...'
 

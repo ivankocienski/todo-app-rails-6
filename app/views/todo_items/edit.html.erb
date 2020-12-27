@@ -1,5 +1,5 @@
 <h1><%= @item.description %></h1>
 
 <% unless @item.completed %>
-    <%= button_to 'Mark as Complete', todo_list_todo_item_path(@todo_list, @item), method: :put %>
+    <%= button_to 'Mark as Complete', todo_item_path(@todo_list, @item), method: :put %>
 <% end %>

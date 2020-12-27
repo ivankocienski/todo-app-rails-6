@@ -1,6 +1,6 @@
 <h1><%= @todo_list.title %></h1>
 
-<p><%= link_to 'Edit', edit_todo_list_path(@todo_list) %></p>
+<p><%= link_to 'Edit', edit_todo_path(@todo_list) %></p>
 
 <% if @show_only_pending %>
     <p>Showing only pending items</p>
@@ -11,8 +11,8 @@
 
 <ul class='index' id='todo-items'>
 <% @todo_items.each do |item| %>
-    <li><%= link_to todo_item_title_status(item), todo_list_todo_item_path(@todo_list, item) %></li>
+    <li><%= link_to todo_item_title_status(item), todo_item_path(@todo_list, item) %></li>
 <% end %>
 </ul>
 
-<%= link_to 'Add New Item...', new_todo_list_todo_item_path(@todo_list) %>
+<%= link_to 'Add New Item...', new_todo_item_path(@todo_list) %>

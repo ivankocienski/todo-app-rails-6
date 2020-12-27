@@ -19,7 +19,7 @@ describe 'progress_logs/show', type: :view do
 
         render
 
-        href = todo_list_todo_item_path(todo_item.todo_list, todo_item)
+        href = todo_item_path(todo_item.todo_list, todo_item)
         expect(rendered).to have_selector("a[href='#{href}']", text: 'This is an item')
     end
 end

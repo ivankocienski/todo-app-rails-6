@@ -13,7 +13,7 @@ feature 'Progress log' do
         expect(page).to have_selector('h1', text: 'Saturday 1st January, 2000')
 
         todo_item = TodoItem.first
-        href = todo_list_todo_item_path(todo_item.todo_list, todo_item)
+        href = todo_item_path(todo_item.todo_list, todo_item)
         expect(page).to have_selector("a[href='#{href}']", text: 'A description of the task to do')
     end
 

@@ -19,7 +19,7 @@ describe 'todo_items/edit', type: :view do
         end
 
         it 'has "complete" button' do
-            path = "/todo_lists/#{todo_list.id}/todo_items/#{item.id}"
+            path = "/todo/#{todo_list.id}/items/#{item.id}"
             form_selector = "form[action='#{path}']"
             expect(rendered).to have_selector(form_selector)
 
@@ -36,7 +36,7 @@ describe 'todo_items/edit', type: :view do
         end
 
         it 'does not have "complete" button' do
-            form_selector = "form[action='#{todo_list_todo_item_path(todo_list, item)}']"
+            form_selector = "form[action='#{todo_item_path(todo_list, item)}']"
             expect(rendered).not_to have_selector(form_selector)
 
             button_selector = "input[type='submit'][value='Mark as Complete']"

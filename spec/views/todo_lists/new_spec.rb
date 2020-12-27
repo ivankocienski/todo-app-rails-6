@@ -14,7 +14,7 @@ describe 'todo_lists/new', type: :view do
         render
 
         # form
-        form_filter = "form[action='/todo_lists'][method='post']"
+        form_filter = "form[action='/todo'][method='post']"
         expect(rendered).to have_selector(form_filter)
 
         # label

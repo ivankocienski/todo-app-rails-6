@@ -28,7 +28,7 @@ class TodoListsController < ApplicationController
         @todo_list.save!
 
         flash[:info] = 'Todo List has been created'
-        redirect_to todo_lists_path
+        redirect_to todo_index_path
 
     rescue ActiveRecord::RecordInvalid
         flash.now[:error] = 'Todo List was not saved'
@@ -39,7 +39,7 @@ class TodoListsController < ApplicationController
         @todo_list.update! todo_list_params
 
         flash[:info] = 'Todo List updated successfully'
-        redirect_to todo_lists_path
+        redirect_to todo_index_path
 
     rescue ActiveRecord::RecordInvalid
         flash.now[:error] = 'Todo List failed to update'
@@ -49,7 +49,7 @@ class TodoListsController < ApplicationController
     def destroy
         @todo_list.destroy
 
-        redirect_to todo_lists_path
+        redirect_to todo_index_path
         flash[:info] = 'Todo List has been deleted'
     end
 

@@ -127,7 +127,7 @@ describe TodoListsController, type: :controller do
 
             it 'does a redirect' do
                 post :create, params: { todo_list: create_params }
-                expect(response).to redirect_to('/todo_lists')
+                expect(response).to redirect_to('/todo')
             end
 
             it 'sets up flash' do
@@ -171,7 +171,7 @@ describe TodoListsController, type: :controller do
             it 'redirects with message' do
                 put :update, params: { id: todo_list.id, todo_list: todo_params }
 
-                expect(response).to redirect_to('/todo_lists')
+                expect(response).to redirect_to('/todo')
                 expect(flash[:info]).to eq 'Todo List updated successfully'
             end
         end
@@ -200,7 +200,7 @@ describe TodoListsController, type: :controller do
         it 'redirects with feedback message' do
             delete :destroy, params: { id: todo_list.id }
 
-            expect(response).to redirect_to('/todo_lists')
+            expect(response).to redirect_to('/todo')
             expect(flash[:info]).to eq 'Todo List has been deleted'
         end
     end

@@ -16,7 +16,7 @@ module ProgressLogsHelper
 
     def progress_log_todo_item_link(progress_log)
         title = progress_log.todo_item.description
-        href = todo_list_todo_item_path(progress_log.todo_item.todo_list, progress_log.todo_item)
+        href = todo_item_path(progress_log.todo_item.todo_list, progress_log.todo_item)
 
         link_to(title, href).html_safe
     end
