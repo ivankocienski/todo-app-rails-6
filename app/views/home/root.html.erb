@@ -1,5 +1,11 @@
 <h1>Hello, you</h1>
 
+<ul id='aspirations'>
+<% @aspirations.each do |aspiration| %>
+    <li><%= link_to aspiration.title, aspiration_path(aspiration) %></li>
+<% end %>
+</ul>
+
 <p>
     A small application for managing things to get done. 
 </p>
