@@ -2,10 +2,20 @@ require 'rails_helper'
 
 describe HomeController, type: :controller do
     context '#root' do
-        it 'renders root page' do
+        before :each do
             get :root
+        end
 
+        it 'renders root page' do
             expect(response).to be_successful
+        end
+
+        it 'sets up aspirations' do
+            expect(assigns[:aspirations]).to be_a(ActiveRecord::Relation)
+        end
+
+        it 'sets up todo_lists' do
+            expect(assigns[:todo_lists]).to be_a(ActiveRecord::Relation)
         end
     end
 

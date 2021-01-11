@@ -178,3 +178,7 @@ task
 ----
 
 rename (in UI) todo_list -> todo and todo_item -> item
+
+put aspirations on front page
+
+put todo lists on front page
