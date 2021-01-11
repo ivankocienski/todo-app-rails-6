@@ -5,11 +5,12 @@ require_relative 'config/application'
 
 Rails.application.load_tasks
 
+task(:default).clear_prerequisites
+
 desc 'Run SimpleCove rspec check'
 task :coverage do
-    # ENV['COVERAGE'] = 'true'
-    # Rake::Task['spec'].invoke
-    system 'COVERAGE=true rspec'
+    ENV['COVERAGE'] = 'true'
+    Rake::Task['spec'].invoke
 end
 
 task default: %i[coverage lint]
