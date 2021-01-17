@@ -9,5 +9,7 @@ RSpec.describe Aspiration, type: :model do
                     .is_at_most(200)
             end
         end
+
+        it { is_expected.to have_many(:todo_lists) }
     end
 end
