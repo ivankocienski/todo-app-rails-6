@@ -63,11 +63,11 @@ module Seeder
 
     def seed_todo_listss
         @todo_lists = []
-        @todo_lists << TodoList.create!(title: 'Transistors')
-        @todo_lists << TodoList.create!(title: 'Basic Grammar')
-        @todo_lists << TodoList.create!(title: 'Fine drawing')
-        @todo_lists << TodoList.create!(title: 'Digital Art')
-        @todo_lists << TodoList.create!(title: 'Ohms law')
+        @todo_lists << TodoList.create!(title: 'Transistors', aspiration: @aspirations[1])
+        @todo_lists << TodoList.create!(title: 'Basic Grammar', aspiration: @aspirations[0])
+        @todo_lists << TodoList.create!(title: 'Fine drawing', aspiration: @aspirations[2])
+        @todo_lists << TodoList.create!(title: 'Digital Art', aspiration: @aspirations[2])
+        @todo_lists << TodoList.create!(title: 'Ohms law', aspiration: @aspirations[1])
     end
 
     def seed_todo_items
