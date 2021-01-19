@@ -11,8 +11,10 @@ feature 'Home Page' do
     end
 
     def given_my_todo_lists_exist
+        aspiration = FactoryBot.create(:aspiration)
+
         %i[todo_list todo_list_2 todo_list_3].each do |factory_id|
-            FactoryBot.create factory_id
+            FactoryBot.create factory_id, aspiration: aspiration
         end
     end
 end

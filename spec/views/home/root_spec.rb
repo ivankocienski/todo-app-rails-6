@@ -23,17 +23,4 @@ describe 'home/root', type: :view do
             expect(rendered).to have_selector('ul#aspirations li', count: 3)
         end
     end
-
-    context 'with todo lists' do
-        let(:todo_lists) do
-            %i[todo_list todo_list_2 todo_list_3]
-                .map { |todo_list_name| FactoryBot.create(todo_list_name) }
-        end
-
-        it 'renders aspirations' do
-            assign :todo_lists, todo_lists
-            render
-            expect(rendered).to have_selector('ul#todo-lists li', count: 3)
-        end
-    end
 end

@@ -1,23 +1,19 @@
-<h1>Hello, you</h1>
+<div id='root'>
+    <h1>Hello, you</h1>
 
-<ul id='aspirations'>
-<% @aspirations.each do |aspiration| %>
-    <li><%= link_to aspiration.title, aspiration_path(aspiration) %></li>
-<% end %>
-</ul>
+    <ul id="aspirations">
+    <% @aspirations.each do |aspiration| %>
+        <%= RootAspirationPresenter.new(aspiration).render %>
+    <% end %>
+    </ul>
 
-<ul id='todo-lists'>
-<% @todo_lists.each do |todo_list| %>
-    <li><%= link_to todo_list.title, todo_path(todo_list) %></li>
-<% end %>
-</ul>
+    <p>
+        A small application for managing things to get done. 
+    </p>
 
-<p>
-    A small application for managing things to get done. 
-</p>
-
-<!-- 
-HI! I have no clue what I am doing with his. 
-Don't let anyone tell you that they are some kind of super-human.
-Everyone is broken a little.
--->
+    <!-- 
+    HI! I have no clue what I am doing with his. 
+    Don't let anyone tell you that they are some kind of super-human.
+    Everyone is broken a little.
+    -->
+</div>

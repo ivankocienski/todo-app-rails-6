@@ -3,3 +3,21 @@
     margin-bottom: 1em;
     line-height: 1.5em;
 }
+
+#root ul#aspirations {
+    margin-bottom: 1em;
+
+    li {
+        display: inline-block;
+        padding-right: 0.5em;
+    }
+
+    .aspiration-title {
+        font-size: 1.4em;
+    }
+
+    .todo-list-title {
+        font-size: 1.15em;
+    }
+}
+

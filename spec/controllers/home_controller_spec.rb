@@ -22,7 +22,6 @@ describe HomeController, type: :controller do
     context '#about' do
         it 'renders about page' do
             get :about
-
             expect(response).to be_successful
         end
 
