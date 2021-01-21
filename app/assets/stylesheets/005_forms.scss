@@ -1,0 +1,50 @@
+form {
+
+    &.form {
+        width: 80%;
+    }
+
+    fieldset {
+        padding-bottom: 2em;
+    }
+
+    fieldset label {
+        display: block;
+        font-weight: bold;
+        padding-bottom: 0.5em;
+    }
+
+    fieldset select {
+        padding: 0.5em;
+        width: 100%;
+    }
+
+    fieldset input, fieldset textarea {
+        border: 1px solid #777;
+        border-radius: 3px;
+    }
+
+    .text {
+        width: 100%;
+        font-size: 1.15em;
+        padding: 0.5em;
+    }
+
+    &.form fieldset textarea {
+        height: 7em;
+    }
+
+    input.button {
+        font-size: 1.3em;
+        padding: 0.65em;
+    }
+
+    .hints {
+        font-size: 0.8em;
+        color: #666;
+    }
+
+    .hints ul {
+        padding-left: 1em;
+    }
+}

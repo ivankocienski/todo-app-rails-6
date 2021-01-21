@@ -1,0 +1,29 @@
+header nav {
+    background-color: #333;
+    padding-left: 10px;
+
+    a {
+        display: inline-block;
+        padding: 15px;
+        margin-right: 5px;
+        color: #fff;
+        text-decoration: none;
+        vertical-align: middle;
+    
+        &:hover {
+            background-color: #444;
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        &.active {
+            background-color: #fff;
+            color: #000;
+        }
+    }
+
+    img.icon {
+        width: 1em;
+        margin-right: 0.5em;
+    }
+}
