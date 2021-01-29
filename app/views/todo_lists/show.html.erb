@@ -1,5 +1,9 @@
 <h1><%= @todo_list.title %></h1>
 
+<% if @todo_list.aspiration %>
+<h2><%= link_to @todo_list.aspiration.title, aspiration_path(@todo_list.aspiration) %></h2>
+<% end %>
+
 <p><%= link_to 'Edit', edit_todo_path(@todo_list) %></p>
 
 <% if @show_only_pending %>

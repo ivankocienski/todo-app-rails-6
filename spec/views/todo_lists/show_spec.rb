@@ -28,6 +28,16 @@ describe 'todo_lists/show', type: :view do
             expect(rendered).to have_selector('ul#todo-items li', count: 3)
         end
 
+        context 'with associated aspiration' do
+            let(:aspiration) { FactoryBot.create :aspiration }
+
+            it 'is shown' do
+                todo_list.aspiration = aspiration
+                render
+                expect(rendered).to have_content('Learning German')
+            end
+        end
+
         context 'with item filter' do
             it 'renders filter link when not set' do
                 render

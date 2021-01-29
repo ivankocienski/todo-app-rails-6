@@ -8,6 +8,7 @@ class TodoListsController < ApplicationController
 
     def new
         @todo_list = TodoList.new
+        @aspirations = Aspiration.order(:title).all
     end
 
     def show
@@ -64,7 +65,7 @@ class TodoListsController < ApplicationController
     end
 
     def todo_list_params
-        params.require(:todo_list).permit(:title)
+        params.require(:todo_list).permit(:title, :aspiration_id)
     end
 
     def find_todo_list

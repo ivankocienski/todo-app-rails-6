@@ -29,4 +29,20 @@ describe 'todo_lists/new', type: :view do
         submit_filter = "form input[type='submit'][value='Create Todo list']"
         expect(rendered).to have_selector(submit_filter)
     end
+
+    context 'aspirations' do
+        let(:aspirations) do
+            %i[aspiration aspiration_2 aspiration_3].map do |id|
+                FactoryBot.create id
+            end
+        end
+
+        it 'has aspiration selector' do
+            assign :aspirations, aspirations
+            render
+
+            list_filter = 'select option'
+            expect(rendered).to have_selector(list_filter, count: 4)
+        end
+    end
 end

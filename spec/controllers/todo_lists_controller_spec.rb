@@ -111,6 +111,11 @@ describe TodoListsController, type: :controller do
             get :new
             expect(assigns[:todo_list]).to be_a TodoList
         end
+
+        it 'sets up aspirations' do
+            get :new
+            expect(assigns[:aspirations]).to be_a(ActiveRecord::Relation)
+        end
     end
 
     context '#create' do
@@ -133,6 +138,19 @@ describe TodoListsController, type: :controller do
             it 'sets up flash' do
                 post :create, params: { todo_list: create_params }
                 expect(flash[:info]).to eq 'Todo List has been created'
+            end
+
+            context 'with aspiration' do
+                let(:aspiration) { FactoryBot.create(:aspiration) }
+
+                it 'associates with aspiration when present' do
+                    params = create_params
+                    params[:aspiration_id] = aspiration.id
+                    post :create, params: { todo_list: params }
+
+                    todo_list = assigns[:todo_list]
+                    expect(todo_list.aspiration).to be_a(Aspiration)
+                end
             end
         end
 

@@ -2,6 +2,12 @@
 
 <%= form_for @todo_list, url: todo_index_path, ahtml: { class: 'form' } do |form| %>
     <fieldset>
+        <%= form.label :aspiration_id %>
+        <%= form.select :aspiration_id, aspiration_options(@aspirations) %>
+        <%= field_errors_for @todo_list, :aspiration_id %>
+        <%= field_hints :todo_list, :aspiration_id %>
+    </fieldset>
+    <fieldset>
         <%= form.label :title %>
         <%= form.text_field :title, class: 'text' %>
         <%= field_errors_for @todo_list, :title %>
