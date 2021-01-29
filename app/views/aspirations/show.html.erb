@@ -3,3 +3,13 @@
 <p><%= @aspiration.description %></p>
 
 <p><%= link_to 'Edit', edit_aspiration_path(@aspiration) %></p>
+
+<% if @aspiration.todo_lists.count > 0 %>
+<h2>Todos</h2>
+
+<ul id='todo-lists'>
+<% @aspiration.todo_lists.order(:title).each do |todo_list| %>
+    <li><%= link_to todo_list.title, todo_path(todo_list) %></li>
+<% end %>
+</ul>
+<% end %>
