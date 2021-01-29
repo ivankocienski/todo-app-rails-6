@@ -16,4 +16,18 @@ describe TodoItemsHelper, type: :helper do
             expect(title).to eq("#{item.description} (done)")
         end
     end
+
+    context '#aspiration_options' do
+        it 'returns list of aspirations options' do
+            aspirations = [
+                FactoryBot.build(:aspiration),
+                FactoryBot.build(:aspiration_2),
+                FactoryBot.build(:aspiration_3)
+            ]
+
+            output = aspiration_options(aspirations)
+            expect(output).to be_a(Array)
+            expect(output.length).to eq 4
+        end
+    end
 end

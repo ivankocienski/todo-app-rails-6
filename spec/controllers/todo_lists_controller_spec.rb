@@ -99,6 +99,10 @@ describe TodoListsController, type: :controller do
             get :edit, params: { id: todo_list.id }
             expect(assigns[:todo_list]).to eq todo_list
         end
+        it 'sets up aspirations' do
+            get :edit, params: { id: todo_list.id }
+            expect(assigns[:aspirations]).to be_a(ActiveRecord::Relation)
+        end
     end
 
     context '#new' do
@@ -176,14 +180,23 @@ describe TodoListsController, type: :controller do
 
     context '#update' do
         context 'with valid params' do
-            let(:todo_params) { { title: 'A modified Todo List title' } }
+            let(:aspiration) { FactoryBot.create :aspiration }
+            let(:todo_params) do
+                {
+                    title: 'A modified Todo List title',
+                    aspiration_id: aspiration.id
+                }
+            end
 
             it 'updates item' do
                 put :update, params: { id: todo_list.id, todo_list: todo_params }
 
                 todo_list = assigns[:todo_list]
+                todo_list.reload
+
                 expect(todo_list).to be_a(TodoList)
                 expect(todo_list.title).to eq 'A modified Todo List title'
+                expect(todo_list.aspiration).to eq aspiration
             end
 
             it 'redirects with message' do

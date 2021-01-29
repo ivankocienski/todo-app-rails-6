@@ -22,6 +22,7 @@ class TodoListsController < ApplicationController
     end
 
     def edit
+        @aspirations = Aspiration.order(:title).all
     end
 
     def create
