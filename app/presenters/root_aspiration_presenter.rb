@@ -7,7 +7,7 @@ class RootAspirationPresenter
 
     def render
         html = "<li class='aspiration'>\n"
-        html += "  <span class='aspiration-title'>#{aspiration_link}'</span>\n"
+        html += "  <span class='aspiration-title'>#{aspiration_link}</span>\n"
         html += render_todo_lists
         html += "</li>\n"
 

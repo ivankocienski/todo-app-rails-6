@@ -187,3 +187,47 @@ put todo lists on front page
 add aspiration_id to todo_items
 creating a todo_list with an aspiration
 editing todo_list aspirations
+
+
+
+to fix
+------
+
+front page 
+- list of aspirations/todo_lists
+- empty site prompt
+
+about
+- text/graphics
+
+CTA buttons
+- 'add aspiration' on aspirations index
+- 'add todo' on todo list index
+- 'add progress log' on progress logs index
+- 'add item' on show todo list
+
+show aspiration page
+(a bit sparse?)
+
+show aspiration
+- edit link styling
+- some info about todo list count?
+- "Todos" title? like- what?
+
+show todo list
+- filter button styling
+- edit link styling
+- aspiration link styling (is confusing)
+
+show todo list item
+(is this really needed or could it be in show todo list?)
+
+edit todo list item
+(could this be done better?)
+
+progress logs index
+- fix dates
+- better CTA
+
+
+(for starters, there is likely more to this fix-up)
