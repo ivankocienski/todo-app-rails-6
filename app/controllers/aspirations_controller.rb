@@ -12,7 +12,9 @@ class AspirationsController < ApplicationController
 
     def show; end
 
-    def edit; end
+    def edit
+        @todo_count = @aspiration.todo_lists.count
+    end
 
     def create
         @aspiration = Aspiration.new(aspiration_params)
@@ -38,6 +40,7 @@ class AspirationsController < ApplicationController
     end
 
     def destroy
+        @aspiration.todo_lists.destroy_all if delete_all_todo_lists?
         @aspiration.destroy
 
         flash[:info] = 'Aspiration has been deleted'
@@ -56,5 +59,9 @@ class AspirationsController < ApplicationController
 
     def find_aspiration_from_param_id
         @aspiration = Aspiration.find(params[:id])
+    end
+
+    def delete_all_todo_lists?
+        params[:delete_all_todo_lists].to_i == 1
     end
 end

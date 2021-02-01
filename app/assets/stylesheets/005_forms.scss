@@ -47,4 +47,31 @@ form {
     .hints ul {
         padding-left: 1em;
     }
+
+    fieldset.checkbox {
+        padding-bottom: 1em;
+        p {
+            padding-bottom: 1em;
+        }
+        label {
+            display: inline;
+            font-size: 1.3em;
+            font-weight: normal;
+        }
+        input {
+            display: inline;
+            width: 1.7em;
+        }
+    }
+
+    &.delete_form {
+        padding: 0.5em;
+        padding-top: 1em;
+        background-color: #ddd;
+    }
+
+    &.delete_form fieldset.buttons {
+        padding-bottom: 0.5em;
+    }
+
 }

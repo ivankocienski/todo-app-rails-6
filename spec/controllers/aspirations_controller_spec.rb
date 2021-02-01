@@ -191,5 +191,19 @@ describe AspirationsController, type: :controller do
                 delete :destroy, params: { id: aspiration.id }
             end.to change(Aspiration, :count).by(-1)
         end
+
+        context 'with delete_all_todo_lists flag set' do
+            before :each do
+                %i[todo_list todo_list_2 todo_list_3].each do |id|
+                    FactoryBot.create id, aspiration: aspiration
+                end
+            end
+
+            it 'destroys all todo_lists associated with it' do
+                expect do
+                    delete :destroy, params: { id: aspiration.id, delete_all_todo_lists: 1 }
+                end.to change(TodoList, :count).by(-3)
+            end
+        end
     end
 end

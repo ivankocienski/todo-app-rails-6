@@ -1,8 +1,6 @@
 <h1>Edit Aspiration</h1>
 
-<p><%= button_to 'Delete', aspiration_path(@aspiration), method: :delete %></p>
-
-<%= form_for @aspiration, html: { class: 'form' } do |form| %>
+<%= form_for @aspiration, html: { class: 'form', id: 'edit_aspiration' } do |form| %>
     <fieldset>
         <%= form.label :title %>
         <%= form.text_field :title, class: 'text' %>
@@ -18,4 +16,20 @@
     <fieldset class='buttons'>
         <%= form.submit 'Save', class: 'button' %>
     </fieldset>
+<% end %>
+
+<h2> Delete Aspiration</h2>
+<%= form_for @aspiration, method: :delete, html: { class: 'form delete_form', id: 'delete_aspiration' } do |form| %>
+<% if @todo_count > 0 -%>
+<fieldset class='checkbox'>
+    <p class='info'>
+        This aspiration has <em><%= @todo_count %></em> Todo lists associated with it. 
+    </p>
+    <%= check_box_tag :delete_all_todo_lists, 1, false, class: 'checkbox' %>
+    <%= label_tag :delete_all_todo_lists, 'Delete Todo lists as well' %>
+</fieldset>
+<% end -%>
+<fieldset class='buttons'>
+    <%= form.submit 'Delete', class: 'button' %>
+</fieldset>
 <% end %>
